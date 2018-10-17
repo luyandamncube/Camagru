@@ -1,4 +1,3 @@
-
 *{
     padding: 0;
     margin : 0;
@@ -8,57 +7,78 @@ body{
     background: #1F222B;
 }
 .logo{
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     
 }
-.text2{
-    display: flex;
-    color: #6ab04c;
-    font-size: 30px;
-}
-
 [class*="container-"]{
     display: flex;
     
 }
+/* LOGO */
 .container-1{
-      justify-content: center; /*vertical*/
+      justify-content: center;
       transition: 0.3s; /*fade effect*/
       opacity: 0.6; 
 }
+/* CAMAGRU */
 .container-2{
     color: white;
-    
-    font-size: 6vw;
+    font-size: calc(10px + 3vw);
     font-weight : 700;
     letter-spacing: 8px;
     background: #1F222B;
-    justify-content: center; /*vertical*/
+    justify-content: center;
 }
+/* EDITOR */
 .container-3{
     color: #6ab04c;
-    font-size: 3vw;
-    justify-content: center; /*vertical*/
+    font-size: calc(8px + 3vw);
+    justify-content: center;
 }
 .container-4{
     padding: 4px;
     color: white;
-    justify-content: center; /*vertical*/
+    justify-content: center;
     background-color: #6ab04c;
     transition: 0.3s; /*fade effect*/
     opacity: 0.6; 
 }
-
+/* INPUT BOXES */
 .container-5{
     color: white;
-    justify-content: center; /*vertical*/
+    justify-content: center;
+}
+.container-6{
+    color: white;
+    justify-content: flex-end;
+    padding : 5px;
+    transition: 0.3s; /*fade effect*/
+    opacity: 0.6; 
+}
+.container-7{
+    color: white;
+    justify-content: flex-start;
+    height: 50px;
+    width: 50px;
+    padding : 5px;
+    transition: 0.3s; /*fade effect*/
+    opacity: 0.6; 
+}
+.container-8{
+
 }
 /*psuedo-class*/
 .container-4:hover{
     opacity: 1
 }
+.container-6:hover{
+    opacity: 1
+}
 .container-1:hover{
+    opacity: 1
+}
+.container-7:hover{
     opacity: 1
 }
 .links{
@@ -77,5 +97,9 @@ body{
     width: 100%;
     text-align: center;
     background-color:#1F222B;
-    font-family: 'Courier New', Courier, monospace; 
+    transition: 0.3s; /*fade effect*/
+    opacity: 0.6; 
+}
+.footer:hover{
+	opacity : 1;
 }
