@@ -63,6 +63,8 @@ body{
     font-size: 30px;
     transition: 0.3s; /*fade effect*/
     opacity: 0.6; 
+    height: 100px;
+    width : 100px;
 }
 /* Signup link */
 .container-8{
@@ -110,10 +112,10 @@ body{
 .container-7:hover{
     opacity: 1
 }
-
+/*
 img:hover{
     opacity: 0.5
-}
+}*/
 .links{
     text-decoration: none;
     
@@ -171,3 +173,52 @@ img{
         max-width: 100%;
     }
 }
+
+/* gallery overlay */ 
+.contained {
+    position: relative;
+    width: 100%;
+
+  }
+  
+  .image {
+    display: block;
+    width: 30%;
+  }
+   .overlay {
+    position: absolute;
+    top: 45%;
+    bottom: 0;
+    left: 25%;
+    right: 0;
+    height: 30%;
+    width: 30%;
+    opacity: 0;
+    transition: .3s;
+
+  }
+  
+  .contained:hover .overlay {
+    opacity: 1;
+  }
+
+    img:hover
+  {
+      opacity: 0.5;
+      transition: .3s;
+  }
+  
+  .icon {
+    color: white;
+    font-size: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .fa-user:hover {
+    color: #eee;
+  }

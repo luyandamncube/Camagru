@@ -4,6 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
         <link rel="shortcut icon" type="image/png" href="resources/favicon.png"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 </head>   
     <title>Welcome</title>
     <link rel="stylesheet" href="./src/style.css">
@@ -15,9 +16,26 @@
 <!-- Photo Grid -->
 <div class="row"> 
                 <div class="column">
+                  <div class="contained">
+                    
+                    <div class="overlay" style="display:inline-block;">
+                      <a class ="links" href="#"> <img src="./resources/likes.png" alt="" class="image" />255</a>
+                      <!-- php no of likes 
+                      <a style="display:inline-block"> <img src="./resources/likes.png" alt="" class="image" />
+                      <?php
+                        $pdo = DB::getConnection();
+                        $stmt = $pdo->prepare("Select * FROM table_name where ID = ""img_id" and Type = "comment");
+                        $stmt->execute();
+                        echo $stmt->rowCount();
+                      ?</a>
+                      -->
+                    </div>
+                    <img src="./resources/placeholder.jpg" style="width:100%">
+                  </div>
+
                   <img src="./resources/placeholder.jpg" style="width:100%">
                   <img src="./resources/placeholder.jpg" style="width:100%">
-                  <img src="./resources/placeholder.jpg" style="width:100%">
+
                   <img src="./resources/placeholder.jpg" style="width:100%">
                   <img src="./resources/placeholder.jpg" style="width:100%">
                   <img src="./resources/placeholder.jpg" style="width:100%">
