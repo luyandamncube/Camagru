@@ -19,21 +19,22 @@ body{
 .container-1{
       justify-content: center;
       transition: 0.3s; /*fade effect*/
-      opacity: 0.6; 
+      opacity: 0.6;
+    
 }
 /* CAMAGRU */
 .container-2{
     color: white;
-    font-size: calc(10px + 3vw);
+    font-size: calc(10px + 2vw + 2vh);
     font-weight : 700;
     letter-spacing: 8px;
     background: #1F222B;
     justify-content: center;
 }
-/* EDITOR */
+/* EDITOR  change to em scaling*/
 .container-3{
     color: #6ab04c;
-    font-size: calc(8px + 3vw);
+    font-size: calc(8px + 2vw + 2vh);
     justify-content: center;
 }
 .container-4{
@@ -65,17 +66,23 @@ body{
     transition: 0.3s; /*fade effect*/
     opacity: 0.6; 
 }
-.container-8{
-
+.textarea{
+    color:white; 
+    resize:none;
+    overflow:none;
+    font-size: calc(6px +3vw);
+    border:0px;
+    outline:0px;
+    background-color:rgb(82, 88, 108);
 }
 /*psuedo-class*/
+.container-1:hover{
+    opacity: 1
+}
 .container-4:hover{
     opacity: 1
 }
 .container-6:hover{
-    opacity: 1
-}
-.container-1:hover{
     opacity: 1
 }
 .container-7:hover{
@@ -83,8 +90,8 @@ body{
 }
 .links{
     text-decoration: none;
+    
 }
-
 .container span{
     color : white;
     display: block;
