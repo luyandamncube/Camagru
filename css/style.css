@@ -1,16 +1,7 @@
-*{
-    padding: 0;
-    margin : 0;
-    font-family: sans-serif;
-    box-sizing: border-box;
+*{padding:0;margin:0;font-family:sans-serif;box-sizing:border-box;
 }
-body{
-    background: #1F222B;
-}
-.logo{
-    height: 150px;
-    width: 150px;
-}
+body{background: #1F222B;}
+/* flexbox contianer class */ 
 [class*="container-"]{
     display: flex;
     font-size: calc(6px + 2vw + 2vh);
@@ -18,65 +9,17 @@ body{
     transition: 0.3s; /*fade effect*/
     padding : 0; 
 }
-/* LOGO */
-.container-1{
-      opacity: 0.6;
-}
-/* CAMAGRU */
-.container-2{
-    color: white;
-    font-weight : 700;
-    letter-spacing: 8px;
-    background: #1F222B;
-}
-/* EDITOR */
-.container-3{
-    color: #6ab04c;
+/* LOGO */.container-1{opacity:0.6;}
+/* CAMAGRU */.container-2{color:white;font-weight:700;letter-spacing:8px;background:#1F222B;}
+/* EDITOR */.container-3{color:#6ab04c;}
+/*green banner */.container-4{color:white;background-color:#6ab04c;opacity:0.6;justify-content:center;font-size:calc(6px + 1vw + 1vh);}
+/* Input boxes */.container-5{color:white;}
+/* Login button*/.container-6{color:white;font-size: 100%;justify-content:flex-end;opacity: 0.6;}
+/* Signup button */.container-7{color:white;font-size: 100%;justify-content:flex-start;opacity: 0.6;}
+/* Nav buttons */.container-8{color:white;justify-content:flex-start;opacity:0.6;height:8vh;padding: 10px;}
+/* Nav bar */.container-9{font-size:20px;align-items:center;}
+/* camera buttons */.container-10{justify-content: space-between;color:white;font-size:30px;padding:4px 5px}
 
-}
-/*green banner */
-.container-4{
-    color: white;
-    background-color: #6ab04c;
-    opacity: 0.6;
-    justify-content: center;
-    font-size: calc(6px + 1vw + 1vh);
-}
-/* Input boxes */
-.container-5{
-    color: white;
-}
-/* Login link */
-.container-6{
-    color: white;
-    font-size: 100%;
-    justify-content: flex-end;
-    opacity: 0.6; 
-}
-/* Signup link */
-.container-7{
-    color: white;
-    font-size: 100%;
-    justify-content: flex-start;
-    opacity: 0.6; 
-}
-/* Navigation Logo */
-.container-8{
-    color: white;
-    justify-content: flex-start;
-    opacity: 0.6; 
-    height: 6vh;
-    padding: 10px;
-}
-.container-9{
-   font-size: 20px;
-   align-items: center;   
-}
-.container-8{
-    color: white;
-    justify-content: center;
-    opacity: 0.6; 
-}
 .container-9 > li{
     flex : 1;
     background-color: rgb(14, 15, 17);
@@ -84,6 +27,7 @@ body{
     height : 35px;
     
 }
+.logo{height:150px;width:150px;}
 .textarea{
     color:white; 
     resize:none;
@@ -94,10 +38,11 @@ body{
     border:0;
     outline:0px;
     background-color:rgb(82, 88, 108);
-   
 }
 /*hover psuedo-classes */
-.container-1:hover, .container-4:hover, .container-6:hover, .container-7:hover, .container-8:hover, .contained:hover .overlay, li:hover  {
+.container-1:hover, .container-4:hover, .container-6:hover, 
+.container-7:hover, .container-8:hover,.overlay, li:hover, 
+.footer:hover, .camera_roll_pic:hover{
     opacity: 1
 }
 .links{
@@ -114,9 +59,6 @@ body{
     background-color:#1F222B;
     transition: 0.3s; /*fade effect*/
     opacity: 0.6; 
-}
-.footer:hover{
-	opacity : 1;
 }
 /* image classes */
 img{
@@ -156,6 +98,7 @@ img{
         font-size: 5vw;
     }
 }
+/* media query: mobile */ 
 @media screen and (max-width: 400px) {
     .container-9 > li{
         flex-basis : 100%;
@@ -172,47 +115,6 @@ img{
         width : 200px;
     }
 }
-/* gallery overlay */ 
-.contained {
-    position: relative;
-    width: 100%;
-}
-.image {
-    color: white;
-    font-size: 100px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-150%, -50%);
-    text-align: center;
-    height: 15%;
-  }
-.likes {
-    color: white;
-    font-size: 120%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    text-align: center;
-  }
-.overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: 0.3s;  
-    padding: 4px;
-  }
-
-img:hover{
-    transition: 0.3s;
-}
-
 /*nav bar */
 ul{
     list-style : none;
@@ -236,7 +138,7 @@ nav{
 }
 
 /* CAROUSEL */ 
-.fling-minislide {width:100%; height:0px; ; padding-bottom: 50%; overflow:hidden; position:relative; }
+.fling-minislide {width:100%; height:0px; padding-bottom: 50%; overflow:hidden; position:relative; }
 .fling-minislide img{ 
     position:absolute; 
     animation:fling-minislide 20s infinite; 
@@ -271,22 +173,81 @@ nav{
     width: 400px;
     margin: 0 auto;
 }
-#video_overlays {
+#camera_overlay {
     position:absolute;
     float:left;
     width:400px;
     min-height:400px;
     z-index:10;
 }
-.capture{
-    display: block;
-    margin: 10px 0;
-    background-color: aquamarine;
-    text-align: center;
-    text-decoration: none;
-
+#filter_overlay{
+    position:absolute;
+    float:left;
+    width:400px;
+    min-height:400px;
+    z-index:10;
+    /*background-color: beige; */ 
 }
 #canvas{
     height: 0;
     width: 0;
 }
+#camera_roll{
+    width: 400px;
+    margin: 0 auto;
+}
+.camera_roll_pic{
+    opacity: 0.6;
+    transition: 0.3s;
+}
+/*filters */
+.choice{
+    height : 40px;
+    padding-left: 5px;
+    transition: 0.3s;
+    opacity: 0.6;
+    z-index: 0;
+
+}
+.choice:hover{
+    opacity: 1;
+    height : 100px;
+    z-index: 999;
+    padding-left: 40px;
+}
+.choice:traget{
+    opacity: 1;
+}
+label > input{ /* HIDE RADIO */
+    visibility: hidden; /* Makes input not-clickable */
+    position: absolute; /* Remove input from do cument flow */
+  }
+  label > input + img, label > input + i { /* adj sibling selector, target the image next to the hidden radio */
+    cursor:pointer;
+    border:2px solid transparent;
+  }
+  label > input:checked + img, label > input:checked + i { /* (RADIO CHECKED) IMAGE STYLES */
+    opacity: 1;
+    box-shadow: 10px 0px white;
+  }
+/* CSS + Inline Image Technique:*/ 
+#new_filter{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 50%;
+    margin-top: -25%; /* Half the height */
+    margin-left: -25%; /* Half the width */
+    /*background-color: blue; */
+  }
+  .new_overlay{
+        position:absolute;
+        float:left;
+        width:80px;
+        min-height:60px;
+        z-index:10;
+        background-color: beige;  
+        opacity : 0.6;
+        transition : 0.3s;
+    }
