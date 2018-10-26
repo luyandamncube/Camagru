@@ -251,3 +251,10 @@ label > input{ /* HIDE RADIO */
         opacity : 0.6;
         transition : 0.3s;
     }
+
+    .disabled{
+        pointer-events: none;
+        cursor: default;
+        background-color: grey;
+        display: none;
+    }

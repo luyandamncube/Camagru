@@ -23,8 +23,10 @@ function apply_filter(filter_name){
     else
         filter.hidden = false;
 }
-
+var count = 0;
 (function() {
+    count++;
+
     var video = document.getElementById("video"),
         canvas = document.getElementById("canvas"),
         context = canvas.getContext("2d"),
@@ -48,22 +50,28 @@ function apply_filter(filter_name){
            //an error occured
            //error.code
     }); 
+        document.getElementById("capture").addEventListener("click", function(){
+            context.drawImage(video, 0, 0, 400, 300); //Image from webcam
+            //context.drawImage(filter, 0, 0, 400, 300); //png overlay
+    
+            var photo_container = document.createElement('div');
+            photo_container.setAttribute("class", "camera_roll_pic");
+           // document.getElementById('lc').appendChild(element);
+            photo = document.createElement('img');
+            photo.setAttribute("src", canvas.toDataURL("image/jpg"));
+            //photo.setAttribute("src", "../resources/ph.jpg");
+            //Camera roll
+            photo.setAttribute("width", "80");
+            photo.setAttribute("height", "70");
+            photo.setAttribute("class", "camera_roll_pic");
+            photo.setAttribute("id", "0" + count++);
+            list.insertBefore(photo, camera_roll.firstElementChild);
+            /*
+            if (count > 4)
+                document.getElementById("capture").setAttribute("class", "disabled");
+            */
+            /* logging */
 
-    document.getElementById("capture").addEventListener("click", function(){
-        context.drawImage(video, 0, 0, 400, 300); //Image from webcam
-        context.drawImage(filter, 0, 0, 400, 300); //png overlay
-
-        var photo_container = document.createElement('div');
-        photo_container.setAttribute("class", "camera_roll_pic");
-       // document.getElementById('lc').appendChild(element);
-        photo = document.createElement('img');
-        //photo.setAttribute("src", canvas.toDataURL("image/jpg"));
-        photo.setAttribute("src", "../resources/ph.jpg");
-        //Camera roll
-        photo.setAttribute("width", "80");
-        photo.setAttribute("height", "60");
-        photo.setAttribute("class", "camera_roll_pic");
-        photo.setAttribute("id", "0" + count++);
-        list.insertBefore(photo, camera_roll.firstElementChild);
-    });
+            console.log(count);
+        });   
 })();
