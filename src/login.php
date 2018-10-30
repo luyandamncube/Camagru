@@ -1,3 +1,6 @@
+<?php
+    include '../setup.php';
+?>
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
@@ -8,9 +11,9 @@
     <title>Login</title>
     <link rel="stylesheet" href="../css/style.css">
 <body>
-	<a class="links" href="signup.html"><div class="container-7"> Signup </div></a>
+	<a class="links" href="signup.php"><div class="container-7"> Signup </div></a>
     
-        <div class="container-1"><a class="links"href="gallery.html"><img class="logo" src="../resources/logo1.png"></div></a><br>
+        <div class="container-1"><a class="links"href="gallery.php"><img class="logo" src="../resources/logo1.png"></div></a><br>
 	<div class="container-2"> CAMAGRU </div>
         <div class="container-3"> EDITOR </div>
         <div class ="container-5">
@@ -20,7 +23,7 @@
             <textarea placeholder= " Password" class="textarea"></textarea>
                 </div><br>
         
-        <a href="home.html" class="links"><div class="container-4"> Login </div> </a>  
+        <a href="home.php" class="links"><div class="container-4"> Login </div> </a>  
    <a class="links"href="https://github.com/luyandamncube"><div class="footer">  © lmncube 2018</div></a>
 
 </body>

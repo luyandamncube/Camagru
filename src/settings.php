@@ -1,3 +1,6 @@
+<?php
+	include '../setup.php';
+?>
 <!DOCTYPE html>
 <html>
 	<meta charset="UTF-8">

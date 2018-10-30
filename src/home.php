@@ -1,3 +1,6 @@
+<?php
+    include '../setup.php';
+?>
 <!DOCTYPE html>
 <html>
 	<meta charset="UTF-8">
@@ -12,10 +15,10 @@
 
             <nav>
                     <ul class="container-9">
-                        <li><a class="links" href="gallery.html"><i class="fas fa-home"></i></a></li>
-                        <li><a class="links" href="capture.html"><i class="fas fa-camera"></i></a></li>
-                        <li><a class="links" href="settings.html"><i class="fas fa-cog"></i></a></li>
-                        <li><a class="links" href="../welcome.html"><i class="fas fa-sign-out-alt"></i></a></li>
+                        <li><a class="links" href="gallery.php"><i class="fas fa-home"></i></a></li>
+                        <li><a class="links" href="capture.php"><i class="fas fa-camera"></i></a></li>
+                        <li><a class="links" href="settings.php"><i class="fas fa-cog"></i></a></li>
+                        <li><a class="links" href="../welcome.php"><i class="fas fa-sign-out-alt"></i></a></li>
                     </ul>
             </nav>
 

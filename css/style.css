@@ -20,6 +20,15 @@ body{background: #1F222B;}
 /* Nav bar */.container-9{font-size:20px;align-items:center;}
 /* camera buttons */.container-10{justify-content: space-between;color:white;font-size:30px;padding:4px 5px}
 
+input[type=submit] {
+    color:white;
+    background-color:#6ab04c;
+    opacity:0.6;
+    justify-content:center;
+    font-size:calc(6px + 1vw + 1vh);
+    border : none;
+    width: 100%;
+}
 .container-9 > li{
     flex : 1;
     background-color: rgb(14, 15, 17);
@@ -258,3 +267,34 @@ label > input{ /* HIDE RADIO */
         background-color: grey;
         display: none;
     }
+/* tooltips */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+
+.error{
+    position: relative;
+    display: inline-block;
+    font-size : 5px;
+}

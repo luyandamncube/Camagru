@@ -45,25 +45,27 @@ class Dbh{
         */
 
         /* data source name*/
-        $dsn = "mysql:host=".$this->servername.";dbname=".$this->db.";";
+        $dsn = "mysql:host=".$this->servername.";";
         
         try{
             /* PDO connection (using data source name) */
             $pdo = new PDO($dsn, $this->username, $this->password);
             /* shows error inside of website */
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
             /* executes an SQL statement in a single function call */
             $pdo->exec("CREATE DATABASE IF NOT EXISTS ".$this->db.";");
-            /*
             $pdo->exec("USE ".$this->db);
-            $pdo->exec("CREATE TABLE IF NOT EXISTS users (
-                id INT PRIMARY KEY  NOT NULL AUTO_INCREMENT,
-                login VARCHAR(8),
-                pass VARCHAR(8),
-                access ENUM('admin', 'user', 'other') NOT NULL,
-                creation_date DATE NOT NULL
-            )");
-            */
+
+            $pdo->exec("CREATE TABLE IF NOT EXISTS `users`(
+                `id` INT(50) NOT NULL AUTO_INCREMENT,
+                `login` VARCHAR(255) NOT NULL,
+                `pass` VARCHAR(20) NOT NULL,
+                `email` VARCHAR(100) NOT NULL,
+                `access` ENUM('admin', 'user', 'other', '') NOT NULL,
+                `creation_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                PRIMARY KEY(`id`)
+            ) ENGINE = InnoDB;");
             return $pdo;
         }
         catch (PDOException $e){
@@ -71,6 +73,8 @@ class Dbh{
         }
     }
 }
-
+session_start([
+    'cookie_lifetime' => 86400,
+]);
 ?>
 

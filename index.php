@@ -19,7 +19,7 @@
   ?>
   <div class="container-2" > CAMAGRU </div>
   <div class="text2 container-3"> EDITOR </div>
-  <a class="links"href="./src/signup.html"> <div class="text2 container-4"> Get started! </div>  </a>
+  <a class="links"href="./src/signup.php"> <div class="text2 container-4"> Get started! </div>  </a>
 
 <!-- Photo Grid -->
   <div class="row"> 
