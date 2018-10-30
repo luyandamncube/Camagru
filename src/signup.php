@@ -24,29 +24,22 @@
             htmlspecialchars() function converts special characters to HTML entities. Also voids an XSS attack
         -->
        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="create_user_form" method="POST">
-            <div class ="container-5">
-               <textarea placeholder= " Username" class="textarea" name="username"></textarea>
-               <span class="error"> <?php echo $usernameErr;?></span>
-            </div>
+
+            <div class ="container-5"><textarea placeholder= " Username" class="textarea" name="username"></textarea></div>
+            <div class="container-11"><span > <?php echo $usernameErr;?></span></div>
+
+            <div class ="container-5"><textarea placeholder= " Email" class="textarea" name="email"></textarea></div>
+            <div class="container-11"><span> <?php echo $emailErr;?></span></div>
+
+            <div class ="container-5"><textarea placeholder= " Password" class="textarea" name="password"></textarea></div>
+            <div class="container-11"><span> <?php echo $passwordErr;?></span></div>
+
+            <div class ="container-5"><textarea placeholder= " Confirm Password" class="textarea" name="confirmpassword"></textarea></div>
+            <div class="container-11"><span > <?php echo $confirmpasswordErr;?></span></div>
             
-            <div class ="container-5">
-                <textarea placeholder= " Email" class="textarea" name="email"></textarea>
-                <span class="error"> <?php echo $emailErr;?></span> 
-            </div>
-            <div class ="container-5">
-                <textarea placeholder= " Password" class="textarea" name="password"></textarea>
-                <span class="error"> <?php echo $passwordErr;?>
-            </span> 
-            </div>
-            <div class ="container-5">
-                <textarea placeholder= " Confirm Password" class="textarea" name="confirmpassword"></textarea>
-                <span class="error"> <?php echo $confirmpasswordErr;?>
-            </div>
+
             <br>
-            <div class="container-4"> 
-                <input type="submit" value="Sign me up!">
-                <!-- <a href="#" class="links"><div class="container-4"> Sign me up! </div> </a> -->
-            </div>
+            <div class="container-4"><input type="submit" value="Sign me up!"></div>
             
         </form>     
    <a class="links"href="https://github.com/luyandamncube"><div class="footer">  © lmncube 2018</div></a>
