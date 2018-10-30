@@ -19,7 +19,7 @@ body{background: #1F222B;}
 /* Nav buttons */.container-8{color:white;justify-content:flex-start;opacity:0.6;height:8vh;padding: 10px;}
 /* Nav bar */.container-9{font-size:20px;align-items:center;}
 /* camera buttons */.container-10{justify-content: space-between;color:white;font-size:30px;padding:4px 5px}
-/* signup error messages */.container-11{justify-content: center;font-size: 2px}
+/* signup error messages */.container-11{justify-content: center;font-size: 15px; height: 20px; color: red; }
 input[type=submit] {
     color:white;
     background-color:#6ab04c;
@@ -36,14 +36,10 @@ input[type=submit] {
     height : 35px;
     
 }
-.container-11 >  span{
-    font-size: 7px !important;
-}
+
 .logo{height:150px;width:150px;}
 .textarea{
     width: 400px;
-    margin: 0 auto;
-    position: fixed;
     color:white; 
     resize:none;
     overflow:none;

@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<head>
         <link rel="shortcut icon" typ="image/png" href="../resources/favicon.png"/>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous"><!--load all styles -->
+        <link rel="stylesheet" href="web-fonts-with-css/css/fontawesome-all.min"><!--load all styles -->
 	</head>
 	<title>Home</title>
 	<link rel="stylesheet" href="../css/style.css">

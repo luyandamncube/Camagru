@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<head>
 		<link rel="shortcut icon" typ="image/png" href="../resources/favicon.png"/>
+		<link rel="stylesheet" href="web-fonts-with-css/css/fontawesome-all.min"><!--load all styles -->
 	</head>
 	<title>Settings</title>
 	<link rel="stylesheet" href="../css/style.css">
