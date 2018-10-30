@@ -1,22 +1,16 @@
 <?php
 include_once './src/connect.php';
-Class Setup extends Connection{
-    private $server = "mysql:host=localhost;dbname=db";
-    public function get_server(){
-        return $this->server;
-    }
-}
 
 try{
     //Initial database setup using "mysql:host=localhost"
-    $database = new Setup();
-    $db = $database->openConnection("mysql:host=localhost");
-    $sql = "CREATE DATABASE IF NOT EXISTS db";
+    $database = new Connection();
+    $db = $database->openConnection($database->get_server());
+    $sql = "CREATE DATABASE IF NOT EXISTS ".$database->get_db();
     $db->exec($sql);
     $database->closeConnection();
 
     //SQL using "mysql:host=localhost;dbname=db"
-    $database = new Setup();
+    $database = new SQLRequest();
     $db = $database->openConnection($database->get_server());
     $sql = "CREATE TABLE IF NOT EXISTS `users`(
                 `id` INT(50) NOT NULL AUTO_INCREMENT,
@@ -33,7 +27,6 @@ try{
 catch (PDOException $e){
     echo "There is a problem with the connection: " . $e->getMessage();
 }
-
 
 ?>
 

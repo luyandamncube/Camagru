@@ -1,5 +1,5 @@
 <?php
-    include '../setup.php';
+    //include '../setup.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<head>
         <link rel="shortcut icon" typ="image/png" href="../resources/favicon.png"/>
-        <link rel="stylesheet" href="web-fonts-with-css/css/fontawesome-all.min"><!--load all styles -->
+        <link rel="stylesheet" type="text/css"href="../font/web-fonts-with-css/css/fontawesome-all.min.css"><!--load all styles -->
 	</head>
 	<title>Home</title>
 	<link rel="stylesheet" href="../css/style.css">
@@ -18,7 +18,7 @@
                         <li><a class="links" href="gallery.php"><i class="fas fa-home"></i></a></li>
                         <li><a class="links" href="capture.php"><i class="fas fa-camera"></i></a></li>
                         <li><a class="links" href="settings.php"><i class="fas fa-cog"></i></a></li>
-                        <li><a class="links" href="../welcome.php"><i class="fas fa-sign-out-alt"></i></a></li>
+                        <li><a class="links" href="../index.php"><i class="fas fa-sign-out-alt"></i></a></li>
                     </ul>
             </nav>
 

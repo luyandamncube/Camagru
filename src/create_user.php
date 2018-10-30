@@ -1,5 +1,5 @@
 <?php
-    require_once('../setup.php');
+    include_once 'connect.php';
     function test_input($data) {
         $data = trim($data);
         $data = stripslashes($data);
@@ -61,42 +61,30 @@
             }
         }
         $url = './create_success.php';
+        
         if ($_POST["username"] and $_POST["email"] and $_POST["password"] and $_POST["confirmpassword"]) 
         {
-            class Newdbh extends Dbh {
-                public function create_user(){//CHANGE TO PRIVATE!!!!!!
-                    $this->servername = "localhost";
-                    $this->username = "root";
-                    $this->password = "wszedxrfc";
-                    $this->db = "db";
+            //var_dump($_POST);
+            /*
+            try{
+                $database = new SQLRequest();
+                $db = $database->openConnection($database->get_server());
+                $stm = $db->prepare("INSERT INTO users (id, username,email,pass,access) 
+                                    VALUES ( :id, :username, :email, :pass, :access))");
+                $stm->execute(array(
+                ':id' => 0 , 
+                ':username' => $_POST["username"] , 
+                ':email' => $_POST["email"], 
+                ':pass' => $_POST["pass"],
+                ':access' => 1,
+                ));
 
-                    $dsn = "mysql:host=".$this->servername.";dbname=".$this->db;
-                    try{
-                        /* PDO connection (using data source name) */
-                        $pdo = new PDO($dsn, $this->username, $this->password);
-                        /* shows error inside of website */
-                        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            
-                        /* executes an SQL statement in a single function call */
-                        $sql = "INSERT INTO users (login, pass, email)
-                        VALUES ('".$_POST["username"]."','".$_POST["password"]."','".$_POST["email"]."')";
-                        if ($pdo->query($sql)) {
-                            echo "<script type= 'text/javascript'>alert('New Record Inserted Successfully');</script>";
-                        }
-                        else{
-                            echo "<script type= 'text/javascript'>alert('Data not successfully Inserted.');</script>";
-                        }
-                    //header( "Location: $url" );
-                    //var_dump($_POST);
-                    }
-                    catch(PDOException $e){
-                        echo $e->getMessage();
-                    }
-                    $pdo = null; 
-                }  
+                echo "New record created successfully";
             }
-        }
-            
-            
+            catch (PDOException $e){
+                echo "There is a problem connecting: " . $e->getMessage();
+            }
+            */
+        } 
     }
 ?>
