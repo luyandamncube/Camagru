@@ -20,7 +20,7 @@
             if(!preg_match('/^[a-zA-Z0-9]{5,}$/', $username)) {
                 $usernameErr = "Username should contain English characters, be longer than 4 characters"; 
             }
-          }
+        }
 
         //validate email  
         if (empty($_POST["email"])) {
@@ -60,31 +60,29 @@
                 $confirmpasswordErr = "Passowrds must match";
             }
         }
-        $url = './create_success.php';
         
         if ($_POST["username"] and $_POST["email"] and $_POST["password"] and $_POST["confirmpassword"]) 
         {
-            //var_dump($_POST);
-            /*
+           // var_dump($_POST);
+            
             try{
                 $database = new SQLRequest();
                 $db = $database->openConnection($database->get_server());
-                $stm = $db->prepare("INSERT INTO users (id, username,email,pass,access) 
-                                    VALUES ( :id, :username, :email, :pass, :access))");
+                
+                $stm = $db->prepare("INSERT INTO users (username, email, pass) 
+                                    VALUES (:_1, :_2, :_3)");
+                //USE SINGLE QUOTES HERE!!!                    
                 $stm->execute(array(
-                ':id' => 0 , 
-                ':username' => $_POST["username"] , 
-                ':email' => $_POST["email"], 
-                ':pass' => $_POST["pass"],
-                ':access' => 1,
+                ':_1' => $_POST['username'], 
+                ':_2' => $_POST['email'], 
+                ':_3' => password_hash($_POST['password'], PASSWORD_DEFAULT),
                 ));
-
-                echo "New record created successfully";
+                header('Location: ./create_success.php'); 
             }
             catch (PDOException $e){
                 echo "There is a problem connecting: " . $e->getMessage();
             }
-            */
+        
         } 
     }
 ?>

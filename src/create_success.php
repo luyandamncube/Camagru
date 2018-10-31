@@ -1,5 +1,5 @@
 <?php
-	include '../setup.php';
+	//include '../setup.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,6 +12,11 @@
 	<title>Capture</title>
 	<link rel="stylesheet" href="../css/style.css">
 	<body>
+		<div>
+			<div class="container-2" > WELCOME TO CAMAGRU </div>
+			<div class="text2 container-3"> EDITOR </div>
+			<a class="links"href="./login.php"> <div class="text2 container-4"> Get started! </div>  </a>
+		</div>
 
             
             <a class="links"href="https://github.com/luyandamncube"><div class="footer">© lmncube 2018</div></a>

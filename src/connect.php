@@ -1,8 +1,10 @@
 <?php 
 Class Connection {
+    //protected scope when you want to make your variable/function visible 
+    //in all classes that extend current class including the parent class.
     private  $server = "mysql:host=localhost;";
-    private  $user = "root";
-    private  $pass = "wszedxrfc";
+    protected  $user = "root";
+    protected  $pass = "wszedxrfc";
     private  $data = "db";
     private $options  = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,);
     protected $con;
@@ -25,12 +27,36 @@ Class Connection {
     public function closeConnection() {
         $this->con = null;
     }
+
+
+
 }
 
 Class SQLRequest extends Connection{
     private $server = "mysql:host=localhost;dbname=db";
     public function get_server(){
         return $this->server;
+    }
+    public function create_admin(){
+        //create admin user
+        try{
+            $database = new SQLRequest();
+            $db = $database->openConnection($database->get_server());
+            $stm = $db->prepare("INSERT INTO users (username, email, pass, access) 
+                                VALUES (:_1, :_2, :_3, :_4)");
+            //USE SINGLE QUOTES HERE!!!                    
+            $stm->execute(array(
+            ':_1' => $this->user, 
+            ':_2' => 'ADMIN', 
+            ':_3' => password_hash($this->pass, PASSWORD_DEFAULT),
+            ':_4' => 'admin', 
+            )); 
+            $database->closeConnection();
+        }
+        catch (PDOException $e){
+            echo "There is a problem connecting: " . $e->getMessage();
+        }
+
     }
 }
 ?>
