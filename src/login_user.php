@@ -27,21 +27,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $database = new SQLRequest();
             $db = $database->openConnection($database->get_server());
         
-            $select = $db->prepare("SELECT * FROM users WHERE username=:username");
+            // select a particular user by id
+            $stm = $db->prepare("SELECT * FROM users WHERE username=:_1");
+            $stm->execute(array('_1' => $_POST['loginname'])); 
+            $user = $stm->fetch();
+            //TEST if row was found: print_r($user);
+           //echo $user['pass'];
+           if ($user)
+           {
+            echo "user exists!\n";  
+            //print_r($user);
+           }
+           if ($user['access'] == 'admin')
+           {
+                echo "user is admin\n";
         
-            // no idea what this was doing
-            //$select->setFetchMode();
-            $select->bindParam(':username', $loginame);
-            $select->execute();
-            if(password_verify($loginpass, $row['pass']) ){
-        
-                    //$_SESSION['email'] = $data['email'];
-                   //$_SESSION['name']  = $data['name'];
-                    header("location:profile.php"); 
-                    exit;
-                } else {
-                    echo "invalid email or pass";
-                }
+            }
+           if($_POST['loginpass'])
+           {
+               echo "password:".$_POST['loginpass'];
+           }
+           if (password_verify($_POST['loginpass'], $user['pass']))
+           {
+               echo "valid!";
+           } else {
+               echo "invalid";
+           }
+           
+            $database->closeConnection();
         }
         catch (PDOException $e){
             echo "There is a problem connecting: " . $e->getMessage();
@@ -56,8 +69,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 $sql = "SELECT * FROM users WHERE username = ?";
-$stmt = $dbh->prepare($sql);
-$result = $stmt->execute([$_POST['username']]);
+$stm = $dbh->prepare($sql);
+$result = $stm->execute([$_POST['username']]);
 $users = $result->fetchAll();
 if (isset($users[0]) {
     if (password_verify($_POST['password'], $users[0]->password) {

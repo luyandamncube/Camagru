@@ -61,16 +61,42 @@
             }
         }
         
-        if ($_POST["username"] and $_POST["email"] and $_POST["password"] and $_POST["confirmpassword"]) 
-        {
+        if ($_POST["username"] and $_POST["email"] and $_POST["password"] and $_POST["confirmpassword"]) {
            // var_dump($_POST);
             
             try{
                 $database = new SQLRequest();
                 $db = $database->openConnection($database->get_server());
-                
+                // Validate unique username
+                $stm = $db->prepare("SELECT * FROM users WHERE username=:_1");
+                $stm->execute(array('_1' => $_POST['username'])); 
+                $user = $stm->fetch();
+                if ($user['username'] == $_POST['username'])
+                {
+                    $usernameErr = "Username already exists";
+                    
+                }
+
+                // Validate unique email
+                $stm = $db->prepare("SELECT * FROM users WHERE email=:_1");
+                $stm->execute(array('_1' => $_POST['email'])); 
+                $user = $stm->fetch();
+                if ($user['email'] == $_POST['email'])
+                {
+                    $emailErr = "Email already in use";
+                    
+                }
+                $database->closeConnection();
+            }
+            catch (PDOException $e){
+                echo "There is a problem connecting: " . $e->getMessage();
+            }
+        
+        } 
+        if(!$usernameErr and !$emailErr and !$passwordErr and !$confirmpasswordErr){
+            try{
                 $stm = $db->prepare("INSERT INTO users (username, email, pass) 
-                                    VALUES (:_1, :_2, :_3)");
+                VALUES (:_1, :_2, :_3)");
                 //USE SINGLE QUOTES HERE!!!                    
                 $stm->execute(array(
                 ':_1' => $_POST['username'], 
@@ -82,7 +108,6 @@
             catch (PDOException $e){
                 echo "There is a problem connecting: " . $e->getMessage();
             }
-        
-        } 
+        }
     }
 ?>

@@ -21,12 +21,12 @@ body{background: #1F222B;}
 /* camera buttons */.container-10{justify-content: space-between;color:white;font-size:30px;padding:4px 5px}
 /* signup error messages */.container-11{justify-content: center;font-size: 15px; height: 20px; color: red; }
 input[type=submit] {
-    color:white;
-    background-color:#6ab04c;
-    opacity:0.6;
-    justify-content:center;
-    font-size:calc(6px + 1vw + 1vh);
-    border : none;
+    color: white;
+    background-color: #6ab04c;
+    opacity: 0.6;
+    justify-content: center;
+    font-size: 25px;
+    border: none;
     width: 100%;
 }
 .container-9 > li{
