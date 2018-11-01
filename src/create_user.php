@@ -1,12 +1,5 @@
 <?php
     include_once 'connect.php';
-    function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-
     $username = $email = $password = $confirmpassword = "";
     $usernameErr = $emailErr = $passwordErr = $confirmpasswordErr = "";
     /*var_dump($_POST);*/
@@ -38,7 +31,7 @@
             $passwordErr = "Password is required";
         } else{
             $password = test_input($_POST["password"]);
-            if((mb_strlen($password) <= 8))
+            if((mb_strlen($password) <= 7))
             {
                 $passwordErr = "Password must be 8 characters or more";
             }
@@ -66,7 +59,7 @@
             
             try{
                 $database = new SQLRequest();
-                $db = $database->openConnection($database->get_server());
+                $db = $database->openConnection();
                 // Validate unique username
                 $stm = $db->prepare("SELECT * FROM users WHERE username=:_1");
                 $stm->execute(array('_1' => $_POST['username'])); 

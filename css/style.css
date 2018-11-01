@@ -1,5 +1,8 @@
 *{padding:0;margin:0;font-family:sans-serif;box-sizing:border-box;
 }
+div{
+    display: block;
+}
 body{background: #1F222B;}
 /* flexbox contianer class */ 
 [class*="container-"]{
@@ -20,6 +23,7 @@ body{background: #1F222B;}
 /* Nav bar */.container-9{font-size:20px;align-items:center;}
 /* camera buttons */.container-10{justify-content: space-between;color:white;font-size:30px;padding:4px 5px}
 /* signup error messages */.container-11{justify-content: center;font-size: 15px; height: 20px; color: red; }
+/* settings page */.container-12{display: flex; justify-content: center; }
 input[type=submit] {
     color: white;
     background-color: #6ab04c;
@@ -34,18 +38,18 @@ input[type=submit] {
     background-color: rgb(14, 15, 17);
     padding-top: 3px;
     height : 35px;
-    
 }
 
 .logo{height:150px;width:150px;}
+
 .textarea{
-    width: 400px;
+
     color:white; 
     resize:none;
     overflow:none;
     font-size: calc(4px + 1vw + 1vh);
     height: 4.5vh;
-    width: 40vw;
+    /*width: 40vw;*/
     border:0;
     outline:0px;
     background-color:rgb(82, 88, 108);
@@ -53,12 +57,13 @@ input[type=submit] {
 /*hover psuedo-classes */
 .container-1:hover, .container-4:hover, .container-6:hover, 
 .container-7:hover, .container-8:hover,.overlay, li:hover, 
-.footer:hover, .camera_roll_pic:hover{
+.footer:hover, .camera_roll_pic:hover, .links:hover{
     opacity: 1
 }
 .links{
     text-decoration: none;
     color: white;
+
 }
 .footer{
     color : white;

@@ -1,12 +1,31 @@
 <?php 
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+function is_impty_username($post_var, $error){
+    if (empty($post_var)){
+        $error = "Name is required";
+    }else{
+        return test_input($post_var);
+    }
+}       
+function is_valid_username($var, $error){
+    if (!preg_match('/^[a-zA-Z0-9]{5,}$/', $var)){
+        $error = "Username should contain English characters, be longer than 4 characters";
+    }
+}
 Class Connection {
     //protected scope when you want to make your variable/function visible 
     //in all classes that extend current class including the parent class.
-    private  $server = "mysql:host=localhost;";
+    protected  $server = "mysql:host=localhost;";
     protected  $user = "root";
     protected  $pass = "wszedxrfc";
-    private  $data = "db";
-    private $options  = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,);
+    protected  $data = "db";
+    protected $options  = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,);
     protected $con;
     public function get_db(){
         return $this->data;
@@ -14,9 +33,9 @@ Class Connection {
     public function get_server(){
         return $this->server;
     }
-    public function openConnection($server_){
+    public function openConnection(){
         try{
-            $this->con = new PDO($server_, $this->user,$this->pass,$this->options);
+            $this->con = new PDO($this->server, $this->user,$this->pass,$this->options);
             //echo $this->get_server();
             return $this->con;
         }
@@ -33,15 +52,13 @@ Class Connection {
 }
 
 Class SQLRequest extends Connection{
-    private $server = "mysql:host=localhost;dbname=db";
-    public function get_server(){
-        return $this->server;
-    }
+    protected $server = "mysql:host=localhost;dbname=db";
+
     //create admin user. Tests if user already exists, if so, creates new admin
     public function create_admin(){
         try{
             $database = new SQLRequest();
-            $db = $database->openConnection($database->get_server());
+            $db = $database->openConnection();
             //If there are no variables going to be used in the query
             $stm = $db->query("SELECT * FROM users WHERE access = 'admin'");
             //Get single row, param makes it store as an array

@@ -15,7 +15,7 @@ try{
     $sql = "CREATE TABLE IF NOT EXISTS `users`(
                 `id` INT(50) NOT NULL AUTO_INCREMENT,
                 `username` VARCHAR(255) NOT NULL,
-                `pass` VARCHAR(20) NOT NULL,
+                `pass` VARCHAR(255) NOT NULL,
                 `email` VARCHAR(100) NOT NULL,
                 `access` ENUM('admin', 'user', 'other', '')  NOT NULL  DEFAULT 'user' ,
                 `creation_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,

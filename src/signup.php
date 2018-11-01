@@ -1,5 +1,4 @@
 <?php
-    
     include 'create_user.php';
 ?>
 <!DOCTYPE html>
@@ -31,6 +30,7 @@
             <div class ="container-5"><textarea placeholder= " Username" class="textarea" name="username"></textarea></div>
             <div class="container-11"><?php echo $usernameErr;?></div>
 
+
             <div class ="container-5"><textarea placeholder= " Email" class="textarea" name="email" value=""></textarea></div>
             <div class="container-11"> <?php echo $emailErr;?></div>
 
@@ -41,7 +41,6 @@
             <div class="container-11"><?php echo $confirmpasswordErr;?></div>
             <br>
             <div class="container-4"><input type="submit" value="Sign me up!"></div>
-            
         </form>     
    <a class="links"href="https://github.com/luyandamncube"><div class="footer">  © lmncube 2018</div></a>
 

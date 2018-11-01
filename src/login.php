@@ -1,5 +1,5 @@
 <?php
-    //include '../setup.php';
+    //include 'session.php'; alredy in login_user
     include 'login_user.php';
 ?>
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
         <div class="container-3"> EDITOR </div>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="login_form" method="POST">
-            <div class ="container-5"><textarea placeholder= " Username" class="textarea" name="loginname"></textarea></div>
+            <div class ="container-5"><textarea placeholder= " Username" class="textarea" name="loginname" ><?php echo $loginame;?></textarea></div>
             <div class="container-11"><?php echo $loginameErr;?></div>
             <div class ="container-5"><textarea placeholder= " Password" class="textarea" name="loginpass"></textarea></div>
             <div class="container-11"><?php echo $loginpassErr;?></div>

@@ -1,5 +1,5 @@
 <?php
-	//include '../setup.php';
+	include 'apply_settings.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,13 +13,56 @@
 	<link rel="stylesheet" href="../css/style.css">
 	<body>
 		<div>
-			<a class="links" href="#"onclick="window.history.back()"><img class="container-8" src="../resources/logo1.png"></a>
+			<a class="links" href="#"onclick="window.history.back()"> <img class="container-8" src="../resources/logo1.png"></a>
+			
+		</div>
+		<div class="container-2"><?php echo $_SESSION['username']?>'s </div>
+			<div class="text2 container-3"> PROFILE </div><br>
+		<div style= "display: flex; justify-content: center; "> <img style="height : 200px; width : 200px;border-radius: 100%;" src="../resources/placeholder.jpg"> </div><br>
+		
+		<div style= "display: flex; justify-content: center; color: white; font-size: calc(4px + 1vw + 1vh);"> 
+			joined: <textarea class="textarea" disabled style="enabled: false; background-color: #1F222B;"> <?php echo $_SESSION['creation_date']?></textarea> 
+			
 		</div>
 
+		<div style= "display: flex; justify-content: center; "> 
+			<a href="#" class="links"onclick="clickme('change_username')"> <i style="font-size: calc(4px + 1vw + 1vh);"class="fas fa-edit"></i></a>
+			<textarea class="textarea" id='change_username' disabled style="enabled: false; background-color: #1F222B;"> <?php echo $_SESSION['username']?></textarea> 
+		</div>
+		
+		<div style= "display: flex; justify-content: center; "> 
+			<a href="#" class="links"onclick="clickme('change_email')"> <i style="font-size: calc(4px + 1vw + 1vh);" class="fas fa-edit"></i></a>
+			<textarea class="textarea" id='change_email' disabled style="enabled: false; background-color: #1F222B;"> <?php echo $_SESSION['email']?></textarea> 
+		</div>
 
+		<div style= "display: flex; justify-content: center; "> 
+			<a href="#" class="links"onclick="clickme('change_pass')"> <i style="font-size: calc(4px + 1vw + 1vh);" class="fas fa-edit"></i></a>
+			<textarea class="textarea" id='change_pass' disabled style="enabled: false; background-color: #1F222B;"> Change password</textarea> 
+		</div>
+			<div class="container-11"><?php echo $new_pass ?></div>
 
-        <a lass="links"href="https://github.com/luyandamncube"><div class="footer">© lmncube 2018</div></a>
+		
+		<a class="links"href="https://github.com/luyandamncube"><div class="footer">© lmncube 2018</div></a>
 
-    </body>
+	</body>
+	<script>
+		function clickme($element){
+			$el = document.getElementById($element);
+			if ($el.disabled){
+				$el.disabled = false;
+				$el.style.backgroundColor = "rgb(82, 88, 108)";
+				if ($element == 'change_pass'){
+					$el.placeholder = "New Password";
+				}
+			}
+				
+			else{
+				$el.disabled = true;
+				//$el.setAttribute("background-color", "#1F222B");
+				$el.style.backgroundColor = "#1F222B";
+			}
+		}
+
+	</script>
 </html>
         

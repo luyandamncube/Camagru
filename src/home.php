@@ -1,5 +1,5 @@
 <?php
-    //include '../setup.php';
+    include 'session.php';
 ?>
 <!DOCTYPE html>
 <html>
