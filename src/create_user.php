@@ -31,12 +31,10 @@
             $passwordErr = "Password is required";
         } else{
             $password = test_input($_POST["password"]);
-            if((mb_strlen($password) <= 7))
-            {
+            if((mb_strlen($password) <= 7)){
                 $passwordErr = "Password must be 8 characters or more";
             }
-            if (!preg_match('/[^0-9A-Za-z]/', $password))
-            {
+            if (!preg_match('/[^0-9A-Za-z]/', $password)){
                 $passwordErr = "Password must contain one uppercase character and at least one number" ;
             }
             if (strpos($password, $username))
@@ -64,8 +62,7 @@
                 $stm = $db->prepare("SELECT * FROM users WHERE username=:_1");
                 $stm->execute(array('_1' => $_POST['username'])); 
                 $user = $stm->fetch();
-                if ($user['username'] == $_POST['username'])
-                {
+                if ($user['username'] == $_POST['username']) {
                     $usernameErr = "Username already exists";
                     
                 }

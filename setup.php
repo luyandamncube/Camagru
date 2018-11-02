@@ -4,14 +4,14 @@ include_once './src/connect.php';
 try{
     //Initial database setup using "mysql:host=localhost"
     $database = new Connection();
-    $db = $database->openConnection($database->get_server());
+    $db = $database->openConnection();
     $sql = "CREATE DATABASE IF NOT EXISTS ".$database->get_db();
     $db->exec($sql);
     $database->closeConnection();
 
     //SQL using "mysql:host=localhost;dbname=db"
     $database = new SQLRequest();
-    $db = $database->openConnection($database->get_server());
+    $db = $database->openConnection();
     $sql = "CREATE TABLE IF NOT EXISTS `users`(
                 `id` INT(50) NOT NULL AUTO_INCREMENT,
                 `username` VARCHAR(255) NOT NULL,

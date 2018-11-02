@@ -6,18 +6,29 @@ function test_input($data) {
     $data = htmlspecialchars($data);
     return $data;
 }
-function is_impty_username($post_var, $error){
+/* ABANDONED, DON'T WORK PROPERLY 
+function is_empty_username($var, $post_var, $error){
     if (empty($post_var)){
         $error = "Name is required";
     }else{
-        return test_input($post_var);
+        $var = test_input($post_var);
+        echo "WHAT THE FUUUUCK";
     }
-}       
+}
+function is_empty_password($var, $post_var, $error){
+    if (empty($post_var)){
+        $error = "Password is required";
+    }else{
+        $var = test_input($post_var);
+    }
+}      
+   
 function is_valid_username($var, $error){
     if (!preg_match('/^[a-zA-Z0-9]{5,}$/', $var)){
         $error = "Username should contain English characters, be longer than 4 characters";
     }
 }
+*/  
 Class Connection {
     //protected scope when you want to make your variable/function visible 
     //in all classes that extend current class including the parent class.
@@ -29,9 +40,6 @@ Class Connection {
     protected $con;
     public function get_db(){
         return $this->data;
-    }
-    public function get_server(){
-        return $this->server;
     }
     public function openConnection(){
         try{

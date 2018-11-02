@@ -24,35 +24,53 @@
 			joined: <textarea class="textarea" disabled style="enabled: false; background-color: #1F222B;"> <?php echo $_SESSION['creation_date']?></textarea> 
 			
 		</div>
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"name="" method="POST">
+			
 
-		<div style= "display: flex; justify-content: center; "> 
-			<a href="#" class="links"onclick="clickme('change_username')"> <i style="font-size: calc(4px + 1vw + 1vh);"class="fas fa-edit"></i></a>
-			<textarea class="textarea" id='change_username' disabled style="enabled: false; background-color: #1F222B;"> <?php echo $_SESSION['username']?></textarea> 
-		</div>
-		
-		<div style= "display: flex; justify-content: center; "> 
-			<a href="#" class="links"onclick="clickme('change_email')"> <i style="font-size: calc(4px + 1vw + 1vh);" class="fas fa-edit"></i></a>
-			<textarea class="textarea" id='change_email' disabled style="enabled: false; background-color: #1F222B;"> <?php echo $_SESSION['email']?></textarea> 
-		</div>
+			<div style= "display: flex; justify-content: center; "> 
+				<a href="#" class="links"onclick="clickme('change_username', ' Change username')"> <i style="font-size: calc(4px + 1vw + 1vh);"class="fas fa-edit"></i></a>
+				<textarea name="new_username" class="textarea" id='change_username' disabled style="enabled: false; background-color: #1F222B;"> <?php echo $_SESSION['username']?></textarea> 
+			</div>
+			<div class="container-11"><?php echo $new_userErr?></div>
 
-		<div style= "display: flex; justify-content: center; "> 
-			<a href="#" class="links"onclick="clickme('change_pass')"> <i style="font-size: calc(4px + 1vw + 1vh);" class="fas fa-edit"></i></a>
-			<textarea class="textarea" id='change_pass' disabled style="enabled: false; background-color: #1F222B;"> Change password</textarea> 
-		</div>
-			<div class="container-11"><?php echo $new_pass ?></div>
+
+
+			<div style= "display: flex; justify-content: center; "> 
+			<?php $temp_email = $_SESSION['email'];?>
+				<a href="#" class="links"onclick="clickme('change_email', ' Change email')"> <i style="font-size: calc(4px + 1vw + 1vh);" class="fas fa-edit"></i></a>
+				<textarea name="new_email" class="textarea" id='change_email' disabled style="enabled: false; background-color: #1F222B;"> <?php echo $_SESSION['email']?></textarea> 
+			</div>
+			<div class="container-11"><?php echo $new_emailErr?></div>
+
+
+			<div style= "display: flex; justify-content: center; "> 
+				<a href="#" class="links"onclick="clickme('change_pass', ' Change password'); "> <i style="font-size: calc(4px + 1vw + 1vh);" class="fas fa-edit"></i></a>
+				<textarea name="new_password" class="textarea" id='change_pass' disabled style="enabled: false; background-color: #1F222B;"> Change password</textarea> 
+			</div>
+			<div class="container-11"><?php echo $new_passwordErr?></div>
+
+
+			
+			<div class="container-4"><input type="submit" value="Apply changes"></div>
+		</form>
+			<div class="container-11"><?php echo $message?></div>
 
 		
 		<a class="links"href="https://github.com/luyandamncube"><div class="footer">© lmncube 2018</div></a>
 
 	</body>
 	<script>
-		function clickme($element){
+		function clickme($element, $value){
 			$el = document.getElementById($element);
 			if ($el.disabled){
 				$el.disabled = false;
 				$el.style.backgroundColor = "rgb(82, 88, 108)";
+				$el.value = '';
+				$new_pass = "yaaaay";
 				if ($element == 'change_pass'){
-					$el.placeholder = "New Password";
+					//document.getElementById($element).
+					//$el.placeholder = "New Password";
+					//echo "PASS SHOULD CHANGE";
 				}
 			}
 				
@@ -60,6 +78,7 @@
 				$el.disabled = true;
 				//$el.setAttribute("background-color", "#1F222B");
 				$el.style.backgroundColor = "#1F222B";
+				$el.value = $value;
 			}
 		}
 
