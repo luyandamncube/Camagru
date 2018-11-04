@@ -1,5 +1,5 @@
 <?php
-    //include 'session.php'; alredy in login_user
+    //include 'session.php'; already in login_user
     include 'login_user.php';
 ?>
 <!DOCTYPE html>
@@ -20,9 +20,9 @@
         <div class="container-3"> EDITOR </div>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="login_form" method="POST">
-            <div class ="container-5"><textarea placeholder= " Username" class="textarea" name="loginname" ><?php echo $loginame;?></textarea></div>
+            <div class ="container-5"><textarea placeholder= " Username" class="textarea" name="loginname" ></textarea></div>
             <div class="container-11"><?php echo $loginameErr;?></div>
-            <div class ="container-5"><textarea placeholder= " Password" class="textarea" name="loginpass"></textarea></div>
+            <div class ="container-5"><input type="password" placeholder= " Password" class="input" name="loginpass"></input></div>
             <div class="container-11"><?php echo $loginpassErr;?></div>
             <div class="container-4"><input type="submit" value="Login!"></div>
         </form> 

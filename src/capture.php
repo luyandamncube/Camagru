@@ -1,5 +1,8 @@
 <?php
-	//include '../setup.php';
+	include 'session.php';
+	if (!$_SESSION){
+		header("Location: ../index.php");
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -84,7 +87,7 @@
 				<video style="    transform: rotateY(180deg);
 				-webkit-transform:rotateY(180deg);
 				-moz-transform:rotateY(180deg)"id="video" width="400" height="400" src=""> </video>
-				<a id="capture" class="links"href="#"> <div id="capture-button"class="text2 container-4"> Capture </div>  </a>
+				<a id="capture" class="links"href="#"> <div id="capture-button"class="container-4"> Capture </div>  </a>
 
 				<canvas id="canvas" width="400" height="400"> </canvas>
 			</div>

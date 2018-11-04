@@ -1,5 +1,6 @@
 <?php
 include_once 'connect.php';
+
 include 'session.php';
 
 $loginame = $loginpass = "";
@@ -7,25 +8,20 @@ $loginameErr = $loginpassErr = "";
     /*var_dump($_POST);*/
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //validate username
-    
     if (empty($_POST["loginame"])) {
         $loginameErr = "Name is required";
     } else {
         $loginame = test_input($_POST["loginame"]);
+        $_SESSION['username'] = $loginame;
     }
-    
-    //FIX MEEEEEE
-    //is_empty_username($loginame, $_POST['loginname'], $loginameErr);
-    //echo $loginameErr;
+
     //validate password
-    
     if (empty($_POST["loginpass"])) {
         $loginpassErr = "Password is required";
     } else{
         $loginpass = test_input($_POST["loginpass"]);
     }
     
-    //$loginpass = is_empty_password($_POST['loginname'], $loginpassErr);
     if ($_POST["loginname"] and $_POST["loginpass"]){
         try{
             $database = new SQLRequest();
@@ -50,10 +46,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['username'] = $user['username'];
                     $_SESSION['email'] = $user['email'];
                     $_SESSION['creation_date'] = $user['creation_date'];
-                    $_SESSION['pass'] = $user['pass'];
+                    $_SESSION['pass'] = $_POST['loginpass'];
                     //$_SESSION['dp'] = $user['dp'];
-
-
                     //echo $_SESSION['user'] ;
                }
            } else{

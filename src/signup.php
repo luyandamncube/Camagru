@@ -34,10 +34,10 @@
             <div class ="container-5"><textarea placeholder= " Email" class="textarea" name="email" value=""></textarea></div>
             <div class="container-11"> <?php echo $emailErr;?></div>
 
-            <div class ="container-5"><textarea placeholder= " Password" class="textarea" name="password"></textarea></div>
+            <div class ="container-5"><input type="password" placeholder= " Password" class="input" name="password"></input></div>
             <div class="container-11"><?php echo $passwordErr;?></div>
 
-            <div class ="container-5"><textarea placeholder= " Confirm Password" class="textarea" name="confirmpassword"></textarea></div>
+            <div class ="container-5"><input type="password" placeholder= " Confirm Password" class="input" name="confirmpassword"></input></div>
             <div class="container-11"><?php echo $confirmpasswordErr;?></div>
             <br>
             <div class="container-4"><input type="submit" value="Sign me up!"></div>
