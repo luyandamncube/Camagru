@@ -42,14 +42,14 @@ input[type=submit] {
 
 .logo{height:150px;width:150px;}
 
-.textarea{
+.textarea, .input{
 
     color:white; 
     resize:none;
     overflow:none;
-    font-size: calc(4px + 1vw + 1vh);
+    font-size: calc(1vw + 8px);
     height: 4.5vh;
-    /*width: 40vw;*/
+    width: 30vw;
     border:0;
     outline:0px;
     background-color:rgb(82, 88, 108);
@@ -63,7 +63,7 @@ input[type=submit] {
 .links{
     text-decoration: none;
     color: white;
-
+    opacity: 0.6;
 }
 .footer{
     color : white;
@@ -126,10 +126,7 @@ img{
     .container-4{
         font-size: calc(30px);
     }
-    .textarea{
-        font-size: 20px;
-        width : 200px;
-    }
+   
 }
 /*nav bar */
 ul{
