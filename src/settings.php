@@ -1,7 +1,7 @@
 <?php
 	//include 'apply_settings.php';
 	include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/apply_settings.php';
-	if ($_SESSION['username'] = 'guest'){
+	if ($_SESSION['username'] == 'guest'){
 		header("Location: ../index.php");
 	}
 ?>

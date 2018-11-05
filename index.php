@@ -3,6 +3,7 @@
   include $_SERVER['DOCUMENT_ROOT'].'/Camagru/config/setup.php';
   include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/session.php';
   $_SESSION['username'] = 'guest';
+  unset($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>

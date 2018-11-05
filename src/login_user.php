@@ -42,12 +42,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                if ($user['access'] == 'admin'){
                    header('Location: http://localhost:8080/phpmyadmin');
                }else{
-                    header('Location: home.php');
+                    session_destroy();
+                    session_start();
                     $_SESSION['username'] = $user['username'];
                     $_SESSION['email'] = $user['email'];
                     $_SESSION['creation_date'] = $user['creation_date'];
                     $_SESSION['pass'] = $_POST['loginpass'];
                     $_SESSION['dp'] = $user['avatar'];
+                    header('Location: home.php');
                     //echo $_SESSION['user'] ;
                }
            } else{

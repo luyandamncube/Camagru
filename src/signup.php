@@ -1,6 +1,11 @@
 <?php
 
     include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/create_user.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/session.php';
+    $_SESSION['username'] = '';
+    session_destroy();
+    unset($_SESSION);
+    //var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>

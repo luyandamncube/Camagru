@@ -4,6 +4,9 @@
     if ($_SESSION['username'] == 'guest'){
         header("Location: ../index.php");
     }
+    
+    //echo $_SESSION['username'];
+    //var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html>
