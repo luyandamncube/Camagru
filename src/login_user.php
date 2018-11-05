@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['email'] = $user['email'];
                     $_SESSION['creation_date'] = $user['creation_date'];
                     $_SESSION['pass'] = $_POST['loginpass'];
-                    //$_SESSION['dp'] = $user['dp'];
+                    $_SESSION['dp'] = $user['avatar'];
                     //echo $_SESSION['user'] ;
                }
            } else{

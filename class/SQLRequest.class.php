@@ -38,19 +38,10 @@ Class SQLRequest extends Connection{
             $stm = $db->query("SELECT * FROM users WHERE username = '".$user_name."'");
             //Get single row, param makes it store as an array
             $user = $stm->fetch(PDO::FETCH_ASSOC);
-            //var_dump($user);
-            //echo 
-            echo '<img style="height : 200px; width : 200px; border-radius: 100%;" src="data:image/jpg;base64,'. $user['avatar'].'"/>';
-            //echo $filePath;
-            /*
-            if ($user['username'] == $user_name){
-                
-                $stm = $db->prepare("UPDATE users SET avatar = :_1 
-                                    WHERE username = '".$user_name."'");
-                $stm->execute(array(
-                    ':_1' => $image , 
-                    )); 
-            }*/
+            $_SESSION['dp'] = $user['avatar'];
+            //echo $_SESSION['dp'];
+            //echo '<img style="height : 200px; width : 200px; border-radius: 100%;" src="data:image/jpg;base64,'. $user['avatar'].'"/>';
+
             $database->closeConnection();
         } catch (PDOException $e){
             echo "There is a problem connecting: " . $e->getMessage();

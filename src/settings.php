@@ -25,25 +25,28 @@
 		
 		
 
-		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"name="" method="POST">
+		<form enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"name="" method="POST">
 			<!-- DISPLAY PICTURE -->
 			<div style= "display: flex; justify-content: center; "> 
-				<!--<img style="height : 200px; width : 200px;border-radius: 100%;" src="."> -->
+				
 
 				<div class="">
 				
 						<div  class="container-13" style="position: absolute; width: 200px; height: 200px;border-radius: 100%;">
 						<a href="#" ><i style="font-size:200px;"class="fas fa-upload"></i></a>
-							<input style="width:400px" type="file" name="upload_dp" class= "upload_dp"accept="image/*">
+							<input  onchange="document.getElementById('blah').src = window.URL.createObjectURL(this.files[0])" style="width:400px" type="file" name="upload_dp" class= "upload_dp"accept="image/*">
 						</div>
-					
+
 					<?php 
-						include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/getdp.php';
+						$image_pre = '<img style="height : 200px; width : 200px; border-radius: 100%;" src="data:image/jpg;base64,';
+						echo $image_pre.$current_dp.'"/>';
 					?>
 				</div>
 
 			</div><br>
-			
+			<!-- <img id="blah" style="height : 200px; width : 200px;border-radius: 100%;" src=""> -->
+
+
 			<!-- USER NAME -->
 			<div style= "display: flex; justify-content: center;"> 
 				<a href="#" class="links"onclick="clickme('change_username', '<?php echo $_SESSION['username']?>')"> <i style="font-size: calc(4px + 1vw + 1vh);"class="fas fa-edit"></i></a>
@@ -99,6 +102,7 @@
 				$el.value = $value;
 			}
 		}
+		
 
 	</script>
 </html>

@@ -4,6 +4,7 @@
 include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/connect.php';
 include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/session.php';
 
+$current_dp = $_SESSION['dp'];
 $new_user = $new_email = $new_password = $new_dp = "";
 $new_userErr = $new_emailErr = $new_passwordErr = "";
 $message = ""; //Changes applied successfully message
@@ -72,13 +73,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "There is a problem connecting: " . $e->getMessage();
             }        
     } 
+    //Validate new profile picture
+    if (!isset($_POST["upload_dp"])){
+        $new_dp = $_SESSION['dp'];
+    } else{
+        $new_dp = test_input($_POST["upload_dp"]);
+    }
+
     if(!$new_userErr and !$new_emailErr and !$new_passwordErr){
         try{
-            $stm = $db->prepare("UPDATE users SET username =  :_1, email = :_2, pass = :_3 ,
+            $stm = $db->prepare("UPDATE users SET username =  :_1, email = :_2, pass = :_3 
                                 WHERE username =  '".$_SESSION['username']."';");
             //USE SINGLE QUOTES HERE!!!  
             $new_hash = password_hash($new_password, PASSWORD_DEFAULT);   
-                    
+            //convert path into image
+           // $new_dp = file_get_contents($dp_path);
+            //$new_dp = base64_encode($new_dp);
             $stm->execute(array(
             ':_1' => $new_user, 
             ':_2' => $new_email, 
@@ -87,9 +97,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['username'] = $new_user;
             $_SESSION['email'] = $new_email;
             $_SESSION['pass'] = $new_password;
-            //echo $upload_dp;
-            //$database->update_dp($_SESSION['username'], $_SERVER['DOCUMENT_ROOT'].'/Camagru/resources/user.png');  
+            //array that contains Information about uploaded files 
+            $new_dp = $_FILES['upload_dp']['tmp_name'];
+            
+
+            //FRESH request needed, backlog for some reason if not a new request
+            if ($new_dp){
+                $database->update_dp($new_user, $new_dp); 
+            }
+            $database = new SQLRequest();
+            $db = $database->openConnection();
+            $stm = $db->prepare("SELECT * FROM users WHERE username=:_1");
+            $stm->execute(array('_1' => $_SESSION['username'])); 
+            $user = $stm->fetch();
+            $current_dp = $user['avatar'];
             $message = "Changes applied successfully";
+            $database->closeConnection();
         }
         catch (PDOException $e){
             echo "There is a problem connecting to the database: " . $e->getMessage();
