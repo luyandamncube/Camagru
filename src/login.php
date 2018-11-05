@@ -1,6 +1,7 @@
 <?php
     //include 'session.php'; already in login_user
-    include 'login_user.php';
+    //include 'login_user.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/login_user.php';
 ?>
 <!DOCTYPE html>
 <html>

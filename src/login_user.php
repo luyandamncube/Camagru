@@ -1,7 +1,8 @@
 <?php
-include_once 'connect.php';
-
-include 'session.php';
+//include_once 'connect.php';
+//include 'session.php';
+include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/connect.php';
+include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/session.php';
 
 $loginame = $loginpass = "";
 $loginameErr = $loginpassErr = "";

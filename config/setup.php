@@ -1,6 +1,6 @@
 <?php
-include_once './src/connect.php';
-
+//include_once './src/connect.php';
+include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/connect.php';
 try{
     //Initial database setup using "mysql:host=localhost"
     $database = new Connection();

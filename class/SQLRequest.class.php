@@ -1,7 +1,10 @@
 <?php
-include 'Connection.class.php';
+//include 'Connection.class.php';
+include $_SERVER['DOCUMENT_ROOT'].'/Camagru/class/Connection.class.php';
 Class SQLRequest extends Connection{
-    protected $server = "mysql:host=localhost;dbname=db";
+
+    //protected $server = "mysql:host=localhost;dbname=db";
+                        //"mysql:host=localhost;dbname=db";
 
     //create admin user. Tests if user already exists, if so, creates new admin
     public function create_admin(){

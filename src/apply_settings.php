@@ -1,6 +1,8 @@
 <?php
-include_once 'connect.php';
-include 'session.php';
+//include_once 'connect.php';
+//include 'session.php';
+include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/connect.php';
+include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/session.php';
 
 $new_user = $new_email = $new_password = "";
 $new_userErr = $new_emailErr = $new_passwordErr = "";

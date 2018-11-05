@@ -1,5 +1,6 @@
 <?php
-    include 'create_user.php';
+    //include 'create_user.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/create_user.php';
 ?>
 <!DOCTYPE html>
 <html>

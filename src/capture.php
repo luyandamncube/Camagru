@@ -1,7 +1,9 @@
 <?php
-	include 'session.php';
+	//include 'session.php';
+	include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/session.php';
 	if (!$_SESSION){
 		header("Location: ../index.php");
+		//header("Location: ".$_SERVER['DOCUMENT_ROOT']."/"."Camagru/");
 	}
 ?>
 <!DOCTYPE html>

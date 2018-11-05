@@ -1,7 +1,6 @@
 
 <?php 
-  include 'setup.php';
-
+  include $_SERVER['DOCUMENT_ROOT'].'/Camagru/config/setup.php';
 ?>
 <!DOCTYPE html>
 <html>

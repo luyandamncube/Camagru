@@ -1,5 +1,6 @@
 <?php
-    include_once 'connect.php';
+    //include_once 'connect.php';
+    include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/connect.php';
     $username = $email = $password = $confirmpassword = "";
     $usernameErr = $emailErr = $passwordErr = $confirmpasswordErr = "";
     /*var_dump($_POST);*/

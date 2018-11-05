@@ -6,8 +6,8 @@ function test_input($data) {
     $data = htmlspecialchars($data);
     return $data;
 }
-//include 'Connection.class.php';
-include 'SQLRequest.class.php';
+//include 'SQLRequest.class.php';
+include $_SERVER['DOCUMENT_ROOT'].'/Camagru/class/SQLRequest.class.php';
 /* ABANDONED, DOESN'T WORK PROPERLY 
 function is_empty_username($var, $post_var, $error){
     if (empty($post_var)){
