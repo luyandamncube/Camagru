@@ -4,7 +4,7 @@
 include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/connect.php';
 include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/session.php';
 
-$new_user = $new_email = $new_password = "";
+$new_user = $new_email = $new_password = $new_dp = "";
 $new_userErr = $new_emailErr = $new_passwordErr = "";
 $message = ""; //Changes applied successfully message
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -74,9 +74,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } 
     if(!$new_userErr and !$new_emailErr and !$new_passwordErr){
         try{
-            $stm = $db->prepare("UPDATE users SET username =  :_1, email = :_2, pass = :_3 WHERE username =  '".$_SESSION['username']."';");
+            $stm = $db->prepare("UPDATE users SET username =  :_1, email = :_2, pass = :_3 ,
+                                WHERE username =  '".$_SESSION['username']."';");
             //USE SINGLE QUOTES HERE!!!  
-            $new_hash = password_hash($new_password, PASSWORD_DEFAULT);             
+            $new_hash = password_hash($new_password, PASSWORD_DEFAULT);   
+                    
             $stm->execute(array(
             ':_1' => $new_user, 
             ':_2' => $new_email, 
@@ -85,6 +87,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['username'] = $new_user;
             $_SESSION['email'] = $new_email;
             $_SESSION['pass'] = $new_password;
+            //echo $upload_dp;
+            //$database->update_dp($_SESSION['username'], $_SERVER['DOCUMENT_ROOT'].'/Camagru/resources/user.png');  
             $message = "Changes applied successfully";
         }
         catch (PDOException $e){

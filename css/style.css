@@ -24,6 +24,7 @@ body{background: #1F222B;}
 /* camera buttons */.container-10{justify-content: space-between;color:white;font-size:30px;padding:4px 5px}
 /* signup error messages */.container-11{justify-content: center;font-size: 15px; height: 20px; color: red; }
 /* settings page */.container-12{display: flex; justify-content: center; }
+/* sdp overlay */.container-13{color:white;opacity:0.0;justify-content:center;}
 input[type=submit] {
     color: white;
     background-color: #6ab04c;
@@ -56,9 +57,16 @@ input[type=submit] {
 }
 /*hover psuedo-classes */
 .container-1:hover, .container-4:hover, .container-6:hover, 
-.container-7:hover, .container-8:hover,.overlay, li:hover, 
-.footer:hover, .camera_roll_pic:hover, .links:hover{
+.container-7:hover, .container-8:hover, .overlay, li:hover, 
+.footer:hover, .camera_roll_pic:hover, 
+.links:hover, .dp_overlay{
     opacity: 1
+}
+.container-13:hover{
+    opacity: 0.6;
+}
+.dp_overlay{
+    opacity : 0.6;
 }
 .links{
     text-decoration: none;
@@ -186,20 +194,15 @@ nav{
     width: 400px;
     margin: 0 auto;
 }
-#camera_overlay {
+#camera_overlay, #filter_overlay, #dp_overlay{
     position:absolute;
     float:left;
     width:400px;
     min-height:400px;
     z-index:10;
 }
-#filter_overlay{
-    position:absolute;
-    float:left;
-    width:400px;
-    min-height:400px;
-    z-index:10;
-    /*background-color: beige; */ 
+#dp_overlay:hover{
+    opacity: 1;
 }
 #canvas{
     height: 0;
@@ -213,7 +216,6 @@ nav{
     opacity: 0.6;
     transition: 0.3s;
 }
-/*filters */
 .choice{
     height : 40px;
     padding-left: 5px;
@@ -254,7 +256,7 @@ label > input{ /* HIDE RADIO */
     margin-left: -25%; /* Half the width */
     /*background-color: blue; */
   }
-  .new_overlay{
+.new_overlay{
         position:absolute;
         float:left;
         width:80px;
@@ -263,35 +265,20 @@ label > input{ /* HIDE RADIO */
         background-color: beige;  
         opacity : 0.6;
         transition : 0.3s;
-    }
+}
 
-    .disabled{
+.disabled{
         pointer-events: none;
         cursor: default;
         background-color: grey;
         display: none;
-    }
-/* tooltips */
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
 }
 
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-
-    /* Position the tooltip */
+.upload_dp{
+    width: 0px;
+	height: 200px;
+	opacity: 0.1;
     position: absolute;
-    z-index: 1;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
+    background-color: black;
+	
 }

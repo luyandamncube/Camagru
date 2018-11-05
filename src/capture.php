@@ -1,6 +1,7 @@
 <?php
 	//include 'session.php';
 	include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/session.php';
+	//var_dump($_SESSION);
 	if (!$_SESSION){
 		header("Location: ../index.php");
 		//header("Location: ".$_SERVER['DOCUMENT_ROOT']."/"."Camagru/");
@@ -26,65 +27,58 @@
 					<img id="new_filter" src="" style="width : 35%" hidden="true">
 				</div>
 				<div id="camera_overlay"> 		
-					<div style="width: 100%; height: 40px;">	
-						<div style="color: white; font-size : 25px; text-align: center" > Click on a picture to save it </div>
-					</div>
-					<div class="container-10"style="background-color:orange; opacity: 0.6; width: 100%; height: 40px;">
+
+					<div class="links container-10"style="opacity: 0.6; width: 100%; height: 50px;">
 							<label>
 									<input type="radio" name="filters" value="small" onclick="apply_filter('')"/>
-									<i class="fas fa-times-circle"></i>
+									<i style= "opacity: 0.6;"class="fas fa-times-circle"></i>
 							</label>
 							<a class="links"href="#" onclick="upload.php"><i class="fas fa-upload"></i> </a>
 					</div>
-					<div style="background-color:purple; opacity: 0.6; width: 100%; height: 40px;">
+					<div style=" width: 100%; height: 40px;">
 						<label>
 							<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/01.png')"/>
 							<img class="choice" src="../filters/01.png">
 						</label>
 					</div>
-					<div style="background-color:green; opacity: 0.6; width: 100%; height: 40px;">	
+					<div style="width: 100%; height: 40px;">	
 						<label>
 								<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/02.png')"/>
 								<img class="choice" src="../filters/02.png">
 						</label>
 
 					</div>
-					<div style="background-color:aqua; opacity: 0.6; width: 100%; height: 40px;">
+					<div style="width: 100%; height: 40px;">
 						<label>
 							<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/03.png')"/>
 							<img class="choice" src="../filters/03.png">
 						</label>
 					</div>
-					<div style="background-color:orange; opacity: 0.6; width: 100%; height: 40px;">
+					<div style="width: 100%; height: 40px;">
 						<label>
 							<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/04.png')"/>
 							<img class="choice" src="../filters/04.png">
 						</label>
 					</div>
-					<div style="background-color:purple; opacity: 0.6; width: 100%; height: 40px;">
+					<div style=" width: 100%; height: 40px;">
 						<label>
 							<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/05.png')"/>
 							<img class="choice" src="../filters/05.png">
 						</label>
 					</div>
-					<div style="background-color:green; opacity: 0.6; width: 100%; height: 40px;">
+					<div style="width: 100%; height: 40px;">
 						<label>
 							<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/06.png')"/>
 							<img class="choice" src="../filters/06.png">
 						</label>
 					</div>
-					<div style="background-color:aqua; opacity: 0.6; width: 100%; height: 40px;">
+					<div style="width: 100%; height: 40px;">
 						<label>
 							<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/07.png')"/>
 							<img class="choice" src="../filters/07.png">
 						</label>
 					</div>
-					<div style="background-color:orange; opacity: 0.6; width: 100%; height: 40px;">
-						<label>
-							<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/08.png')"/>
-							<img class="choice" src="../filters/08.png">
-						</label>
-					</div>
+
 				</div>
 				<video style="    transform: rotateY(180deg);
 				-webkit-transform:rotateY(180deg);

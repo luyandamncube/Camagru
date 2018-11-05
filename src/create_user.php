@@ -94,6 +94,7 @@
                 ':_2' => $_POST['email'], 
                 ':_3' => password_hash($_POST['password'], PASSWORD_DEFAULT),
                 ));
+                $database->update_dp($_POST['username'], $_SERVER['DOCUMENT_ROOT'].'/Camagru/resources/user.png');
                 header('Location: ./create_success.php'); 
             }
             catch (PDOException $e){

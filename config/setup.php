@@ -19,11 +19,13 @@ try{
                 `email` VARCHAR(100) NOT NULL,
                 `access` ENUM('admin', 'user', 'other', '')  NOT NULL  DEFAULT 'user' ,
                 `creation_date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+                `avatar` LONGBLOB,
                 PRIMARY KEY(`id`)
             ) ENGINE = InnoDB;"; 
     $db->exec($sql);
     //Create admin user
     $database->create_admin();
+    $database->update_dp('root', $_SERVER['DOCUMENT_ROOT'].'/Camagru/resources/user.png');
     $database->closeConnection();
 }
 catch (PDOException $e){

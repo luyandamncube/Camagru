@@ -2,11 +2,60 @@
 //include 'Connection.class.php';
 include $_SERVER['DOCUMENT_ROOT'].'/Camagru/class/Connection.class.php';
 Class SQLRequest extends Connection{
-
-    //protected $server = "mysql:host=localhost;dbname=db";
-                        //"mysql:host=localhost;dbname=db";
-
     //create admin user. Tests if user already exists, if so, creates new admin
+    public function update_dp($user_name, $filePath) {
+        try{
+            $image = fopen($filePath, 'rb');
+            $database = new SQLRequest();
+            $db = $database->openConnection();
+            //If there are no variables going to be used in the query
+            $stm = $db->query("SELECT * FROM users WHERE username = '".$user_name."'");
+            //Get single row, param makes it store as an array
+            $user = $stm->fetch(PDO::FETCH_ASSOC);
+            //echo $filePath;
+
+            $actual_file = file_get_contents($filePath);
+            $actual_file = base64_encode($actual_file);
+            if ($user['username'] == $user_name){
+                
+                $stm = $db->prepare("UPDATE users SET avatar = :_1 
+                                    WHERE username = '".$user_name."'");
+                $stm->execute(array(
+                    ':_1' => $actual_file , 
+                    ));  
+            }
+            $database->closeConnection();
+        } catch (PDOException $e){
+            echo "There is a problem connecting: " . $e->getMessage();
+        }
+    }
+    public function get_dp($user_name) {
+        try{
+            //$image = fopen($filePath, 'rb');
+            $database = new SQLRequest();
+            $db = $database->openConnection();
+            //If there are no variables going to be used in the query
+            $stm = $db->query("SELECT * FROM users WHERE username = '".$user_name."'");
+            //Get single row, param makes it store as an array
+            $user = $stm->fetch(PDO::FETCH_ASSOC);
+            //var_dump($user);
+            //echo 
+            echo '<img style="height : 200px; width : 200px; border-radius: 100%;" src="data:image/jpg;base64,'. $user['avatar'].'"/>';
+            //echo $filePath;
+            /*
+            if ($user['username'] == $user_name){
+                
+                $stm = $db->prepare("UPDATE users SET avatar = :_1 
+                                    WHERE username = '".$user_name."'");
+                $stm->execute(array(
+                    ':_1' => $image , 
+                    )); 
+            }*/
+            $database->closeConnection();
+        } catch (PDOException $e){
+            echo "There is a problem connecting: " . $e->getMessage();
+        }
+    }
     public function create_admin(){
         try{
             $database = new SQLRequest();

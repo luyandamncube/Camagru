@@ -1,5 +1,6 @@
 <?php
-	include 'apply_settings.php';
+	//include 'apply_settings.php';
+	include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/apply_settings.php';
 	if (!$_SESSION){
         header("Location: ../index.php");
     }
@@ -16,20 +17,34 @@
 	<link rel="stylesheet" href="../css/style.css">
 	<body>
 		<div>
-			<a class="links" href="home.php"> <img class="container-8" src="../resources/logo1.png"></a>
+			<a class="links" href="home.php" > <img class="container-8" src="../resources/logo1.png"></a>
 			
 		</div>
 		<div class="container-2"><?php echo $_SESSION['username']?>'s </div>
 			<div class="text2 container-3"> PROFILE </div><br>
-		<div style= "display: flex; justify-content: center; "> <img style="height : 200px; width : 200px;border-radius: 100%;" src="../resources/placeholder.jpg"> </div><br>
 		
-		<div style= "display: flex; justify-content: center; color: white;"> 
-			joined: <textarea class="textarea" disabled style="enabled: false; background-color: #1F222B; width: 70px+30vw;"> <?php echo $_SESSION['creation_date']?></textarea> 
-			
-		</div>
-		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"name="" method="POST">
-			
+		
 
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"name="" method="POST">
+			<!-- DISPLAY PICTURE -->
+			<div style= "display: flex; justify-content: center; "> 
+				<!--<img style="height : 200px; width : 200px;border-radius: 100%;" src="."> -->
+
+				<div class="">
+				
+						<div  class="container-13" style="position: absolute; width: 200px; height: 200px;border-radius: 100%;">
+						<a href="#" ><i style="font-size:200px;"class="fas fa-upload"></i></a>
+							<input style="width:400px" type="file" name="upload_dp" class= "upload_dp"accept="image/*">
+						</div>
+					
+					<?php 
+						include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/getdp.php';
+					?>
+				</div>
+
+			</div><br>
+			
+			<!-- USER NAME -->
 			<div style= "display: flex; justify-content: center;"> 
 				<a href="#" class="links"onclick="clickme('change_username', '<?php echo $_SESSION['username']?>')"> <i style="font-size: calc(4px + 1vw + 1vh);"class="fas fa-edit"></i></a>
 				<textarea name="new_username" class="textarea" id='change_username' disabled style="enabled: false; background-color: #1F222B;"> <?php echo $_SESSION['username']?></textarea> 
@@ -37,7 +52,7 @@
 			<div class="container-11"><?php echo $new_userErr?></div>
 
 
-
+			<!-- EMAIL ADDRESS -->
 			<div style= "display: flex; justify-content: center;"> 
 			<?php $temp_email = $_SESSION['email'];?>
 				<a href="#" class="links"onclick="clickme('change_email', '<?php echo $_SESSION['email']?>')"> <i style="font-size: calc(4px + 1vw + 1vh);" class="fas fa-edit"></i></a>
