@@ -245,19 +245,11 @@ label > input{ /* HIDE RADIO */
   }
   label > input:checked + img, label > input:checked + i { /* (RADIO CHECKED) IMAGE STYLES */
     opacity: 1;
-    box-shadow: 10px 0px white;
+    box-shadow: 10px 0px 0px 0px white;
   }
 /* CSS + Inline Image Technique:*/ 
-#new_filter{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 50%;
-    height: 50%;
-    margin-top: -25%; /* Half the height */
-    margin-left: -25%; /* Half the width */
-    /*background-color: blue; */
-  }
+
+
 .new_overlay{
         position:absolute;
         float:left;

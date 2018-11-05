@@ -1,10 +1,7 @@
 <?php
-	//include 'session.php';
 	include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/session.php';
-	//var_dump($_SESSION);
-	if (!$_SESSION){
+	if ($_SESSION['username'] = 'guest'){
 		header("Location: ../index.php");
-		//header("Location: ".$_SERVER['DOCUMENT_ROOT']."/"."Camagru/");
 	}
 ?>
 <!DOCTYPE html>
@@ -24,7 +21,7 @@
 		</div>
 		<div class="camera" >
 				<div id="filter_overlay">
-					<img id="new_filter" src="" style="width : 35%" hidden="true">
+					<img id="new_filter" src="" style="width : 100%" hidden="true">
 				</div>
 				<div id="camera_overlay"> 		
 
@@ -37,44 +34,44 @@
 					</div>
 					<div style=" width: 100%; height: 40px;">
 						<label>
-							<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/01.png')"/>
+							<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/101.png')"/>
 							<img class="choice" src="../filters/01.png">
 						</label>
 					</div>
 					<div style="width: 100%; height: 40px;">	
 						<label>
-								<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/02.png')"/>
+								<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/102.png')"/>
 								<img class="choice" src="../filters/02.png">
 						</label>
 
 					</div>
 					<div style="width: 100%; height: 40px;">
 						<label>
-							<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/03.png')"/>
+							<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/103.png')"/>
 							<img class="choice" src="../filters/03.png">
 						</label>
 					</div>
 					<div style="width: 100%; height: 40px;">
 						<label>
-							<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/04.png')"/>
+							<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/104.png')"/>
 							<img class="choice" src="../filters/04.png">
 						</label>
 					</div>
 					<div style=" width: 100%; height: 40px;">
 						<label>
-							<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/05.png')"/>
+							<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/105.png')"/>
 							<img class="choice" src="../filters/05.png">
 						</label>
 					</div>
 					<div style="width: 100%; height: 40px;">
 						<label>
-							<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/06.png')"/>
+							<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/106.png')"/>
 							<img class="choice" src="../filters/06.png">
 						</label>
 					</div>
 					<div style="width: 100%; height: 40px;">
 						<label>
-							<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/07.png')"/>
+							<input type="radio" name="filters" value="small" onclick="apply_filter('../filters/107.png')"/>
 							<img class="choice" src="../filters/07.png">
 						</label>
 					</div>

@@ -1,7 +1,7 @@
 <?php
-    //include 'session.php';
+
     include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/session.php';
-    if (!$_SESSION){
+    if ($_SESSION['username'] == 'guest'){
         header("Location: ../index.php");
     }
 ?>
@@ -21,7 +21,10 @@
                     <ul class="container-9">
                         <li><a class="links" href="gallery.php"><i class="fas fa-home"></i></a></li>
                         <li><a class="links" href="capture.php"><i class="fas fa-camera"></i></a></li>
-                        <li><a class="links" href="settings.php"><i class="fas fa-cog"></i></a></li>
+                        <li><a class="links" href="settings.php"><?php 
+						$image_pre = '<img style="height : 25px; width : 25px; border-radius: 100%;" src="data:image/jpg;base64,';
+						echo $image_pre.$_SESSION['dp'].'"/>';
+					?></a></li>
                         <li><a class="links" href="end.php"><i class="fas fa-sign-out-alt"></i></a></li>
                     </ul>
             </nav>

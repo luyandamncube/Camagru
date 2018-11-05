@@ -1,5 +1,7 @@
 <?php
-	
+	if ($_SESSION['username'] = 'guest'){
+		header("Location: ../index.php");
+	}
 ?>
 <!DOCTYPE html>
 <html>

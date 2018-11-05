@@ -1,6 +1,4 @@
 <?php
-//include_once 'connect.php';
-//include 'session.php';
 include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/connect.php';
 include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/session.php';
 
@@ -86,9 +84,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 WHERE username =  '".$_SESSION['username']."';");
             //USE SINGLE QUOTES HERE!!!  
             $new_hash = password_hash($new_password, PASSWORD_DEFAULT);   
-            //convert path into image
-           // $new_dp = file_get_contents($dp_path);
-            //$new_dp = base64_encode($new_dp);
             $stm->execute(array(
             ':_1' => $new_user, 
             ':_2' => $new_email, 
@@ -111,6 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stm->execute(array('_1' => $_SESSION['username'])); 
             $user = $stm->fetch();
             $current_dp = $user['avatar'];
+            $_SESSION['dp'] = $current_dp;
             $message = "Changes applied successfully";
             $database->closeConnection();
         }

@@ -1,5 +1,4 @@
 <?php
-//include_once './src/connect.php';
 include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/connect.php';
 try{
     //Initial database setup using "mysql:host=localhost"
@@ -13,7 +12,7 @@ try{
     $database = new SQLRequest();
     $db = $database->openConnection();
     $sql = "CREATE TABLE IF NOT EXISTS `users`(
-                `id` INT(50) NOT NULL AUTO_INCREMENT,
+                `id` INT(50) NOT NULL AUTO_INCREMENT UNIQUE,
                 `username` VARCHAR(255) NOT NULL,
                 `pass` VARCHAR(255) NOT NULL,
                 `email` VARCHAR(100) NOT NULL,
@@ -22,6 +21,7 @@ try{
                 `avatar` LONGBLOB,
                 PRIMARY KEY(`id`)
             ) ENGINE = InnoDB;"; 
+
     $db->exec($sql);
     //Create admin user
     $database->create_admin();
