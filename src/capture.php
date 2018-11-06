@@ -22,6 +22,7 @@
 		<div class="camera" >
 				<div id="filter_overlay">
 					<img id="new_filter" src="" style="width : 100%" hidden="true">
+					
 				</div>
 				<div id="camera_overlay"> 		
 
@@ -30,7 +31,21 @@
 									<input type="radio" name="filters" value="small" onclick="apply_filter('')"/>
 									<i style= "opacity: 0.6;"class="fas fa-times-circle"></i>
 							</label>
-							<a class="links"href="#" onclick="upload.php"><i class="fas fa-upload"></i> </a>
+							<div>
+								<a class="links"href="#">
+										<input  onchange="document.getElementById('upload_2').src = window.URL.createObjectURL(this.files[0])" style="font-size : 25px; width:25px; height:25px;" type="file" name="upload_dp" style= "position: relative;"accept="image/*"
+										<i style= "opacity: 0.6; ;"class="fas fa-upload"></i>
+								</a>
+								
+							</div>
+							
+							<!-- 
+								<div  class="container-13" style="position: absolute; width: 150px; height: 150px;border-radius: 100%;">	
+									<a href="#" ><i style="font-size:150px;"class="fas fa-upload"></i></a>
+									
+								</div>
+								<img alt="" id="blah" style="height : 150px; width : 150px;border-radius: 100%;" src="">					
+							-->
 					</div>
 					<div style=" width: 100%; height: 40px;">
 						<label>
@@ -77,9 +92,11 @@
 					</div>
 
 				</div>
+				<img alt="" id="upload_2" style="height : 400px; width : 400px; position : absolute;" src="">	
 				<video style="    transform: rotateY(180deg);
 				-webkit-transform:rotateY(180deg);
 				-moz-transform:rotateY(180deg)"id="video" width="400" height="400" src=""> </video>
+				
 				<a id="capture" class="links"href="#"> <div id="capture-button"class="container-4"> Capture </div>  </a>
 
 				<canvas id="canvas" width="400" height="400"> </canvas>
@@ -89,6 +106,9 @@
 				<!--
 					new DOM images go here
 				-->
+				<div style="width : 80px; height : 60px; background-color : beige; border-color : black;"> </div>
+				
+				
 			</div>	
 			<!--
 			<div>

@@ -1,7 +1,5 @@
 <?php
-	if ($_SESSION['username'] = 'guest'){
-		header("Location: ../index.php");
-	}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,8 +13,8 @@
 	<link rel="stylesheet" href="../css/style.css">
 	<body>
 		<div>
-			<div class="container-2" > WELCOME TO CAMAGRU </div>
-			<div class="text2 container-3"> EDITOR </div>
+			<div class="container-2" > WELCOME TO </div>
+			<div class="text2 container-3"> CAMAGRU </div>
 			<a class="links"href="./login.php"> <div class="text2 container-4"> Get started! </div>  </a>
 		</div>
 

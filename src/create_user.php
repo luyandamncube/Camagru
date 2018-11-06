@@ -95,9 +95,10 @@
                 ':_3' => password_hash($_POST['password'], PASSWORD_DEFAULT),
                 ));
                 $database->update_dp($_POST['username'], $_SERVER['DOCUMENT_ROOT'].'/Camagru/resources/user.png');
+                $_SESSION['username'] = $_POST['username'];
+                echo $_SESSION['username'];
                 header('Location: ./create_success.php'); 
-            }
-            catch (PDOException $e){
+            } catch (PDOException $e){
                 echo "There is a problem connecting: " . $e->getMessage();
             }
         }
