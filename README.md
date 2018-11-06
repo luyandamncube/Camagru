@@ -10,5 +10,5 @@ Web Project
 
 - This project is simply creating an instagram-like clone using HTML, CSS $ javasrcipt (Other Frameworks/Microframeworks/Libraries were forbidden).  
 
-![login](resources/001.gif)
-![settings](resources/003.gif)
+![login](resources/001.gif = 207x312)
+![settings](resources/003.gif = 207x312)
