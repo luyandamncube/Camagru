@@ -1,5 +1,4 @@
 <?php
-//include 'Connection.class.php';
 include $_SERVER['DOCUMENT_ROOT'].'/Camagru/class/Connection.class.php';
 Class SQLRequest extends Connection{
     //create admin user. Tests if user already exists, if so, creates new admin
@@ -12,8 +11,6 @@ Class SQLRequest extends Connection{
             $stm = $db->query("SELECT * FROM users WHERE username = '".$user_name."'");
             //Get single row, param makes it store as an array
             $user = $stm->fetch(PDO::FETCH_ASSOC);
-            //echo $filePath;
-
             $actual_file = file_get_contents($filePath);
             $actual_file = base64_encode($actual_file);
             if ($user['username'] == $user_name){
@@ -31,7 +28,6 @@ Class SQLRequest extends Connection{
     }
     public function get_dp($user_name) {
         try{
-            //$image = fopen($filePath, 'rb');
             $database = new SQLRequest();
             $db = $database->openConnection();
             //If there are no variables going to be used in the query
@@ -39,8 +35,6 @@ Class SQLRequest extends Connection{
             //Get single row, param makes it store as an array
             $user = $stm->fetch(PDO::FETCH_ASSOC);
             $_SESSION['dp'] = $user['avatar'];
-            //echo $_SESSION['dp'];
-            //echo '<img style="height : 200px; width : 200px; border-radius: 100%;" src="data:image/jpg;base64,'. $user['avatar'].'"/>';
 
             $database->closeConnection();
         } catch (PDOException $e){

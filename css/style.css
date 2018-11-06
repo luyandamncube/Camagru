@@ -267,9 +267,9 @@ label > input{ /* HIDE RADIO */
         background-color: grey;
         display: none;
 }
-.upload_dp{
+.upload_dp, .preview_dp{
     width: 0px;
-	height: 200px;
+	height: 150px;
 	opacity: 0;
     position: absolute;
     background-color: black;
