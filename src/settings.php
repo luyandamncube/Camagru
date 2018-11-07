@@ -82,30 +82,6 @@
 		<a class="links"href="https://github.com/luyandamncube"><div class="footer">© lmncube 2018</div></a>
 
 	</body>
-	<script>
-		function clickme($element, $value){
-			$el = document.getElementById($element);
-			if ($el.disabled){
-				$el.disabled = false;
-				$el.style.backgroundColor = "rgb(82, 88, 108)";
-				$el.value = $value;
-				$new_pass = "yaaaay";
-				if ($element == 'change_pass'){
-					//document.getElementById($element).
-					//$el.placeholder = "New Password";
-					//echo "PASS SHOULD CHANGE";
-				}
-			}
-				
-			else{
-				$el.disabled = true;
-				//$el.setAttribute("background-color", "#1F222B");
-				$el.style.backgroundColor = "#1F222B";
-				$el.value = $value;
-			}
-		}
-		
-
-	</script>
+	<script src="../js/elements.js"></script>
 </html>
         

@@ -1,18 +1,17 @@
-/*
-function create_roll(){
-    'use strict';
+function addElement(parentId, elementTag, elementId, html) {
+    // Adds an element to the document
+    var p = document.getElementById(parentId);
+    var newElement = document.createElement(elementTag);
+    newElement.setAttribute('id', elementId);
+    newElement.innerHTML = html;
+    p.appendChild(newElement);
+}
 
-    var newElement = document.createElement('img');
-    newElement.src = '../resources/placeholder.jpg';
-    newElement.height = "30";
-    newElement.width = "40";
-    //newElement.textContent = 'I am a new Element';
-    var list = document.getElementById('camera_roll');
-    //list.appendChild(newElement);
-    list.insertBefore(newElement, camera_roll.firstElementChild);
-    console.log(newElement);
-};
-*/
+function removeElement(elementId) {
+    // Removes an element from the document
+    var element = document.getElementById(elementId);
+    element.parentNode.removeChild(element);
+}
 
 /* apply filter */
 function apply_filter(filter_name){
@@ -50,6 +49,7 @@ var count = 0;
            //an error occured
            //error.code
     }); 
+        //TAKE PICTURE
         document.getElementById("capture").addEventListener("click", function(){
             context.drawImage(video, 0, 0, 400, 300); //Image from webcam
             //context.drawImage(filter, 0, 0, 400, 300); //png overlay
@@ -64,14 +64,24 @@ var count = 0;
             photo.setAttribute("width", "80");
             photo.setAttribute("height", "70");
             photo.setAttribute("class", "camera_roll_pic");
-            photo.setAttribute("id", "0" + count++);
+            photo.setAttribute("id", count++);
             list.insertBefore(photo, camera_roll.firstElementChild);
             /*
             if (count > 4)
                 document.getElementById("capture").setAttribute("class", "disabled");
             */
             /* logging */
-
+            //echo output of count to console
             console.log(count);
         });   
+        //DELETE CAMERA ROLL
+        document.getElementById("delete").addEventListener("click", function(){
+            var deleteme = document.getElementById("camera_roll");
+            deleteme.innerHTML="";
+            count = 0;
+        });
+        
+
 })();
+
+
