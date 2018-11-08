@@ -31,27 +31,50 @@ function addElement(parentId, elementTag, elementId, html) {
 
 function removeElement(elementId) {
     // Removes an element from the document
-    var element = document.getElementById(elementId);
-    element.parentNode.removeChild(element);
+    //var element = document.getElementById(elementId);
+    elementId.parentNode.removeChild(element);
 }
 
 function hideElement(elementId){
-    var element = document.getElementById(elementId);
-    element.style.display = "none";
+    //var element = document.getElementById(elementId);
+    elementId.style.display = "none";
 }
 
 function showElement(elementId){
-    var element = document.getElementById(elementId);
-    element.style.display = "block";
+    //var element = document.getElementById(elementId);
+    elementId .style.display = "block";
 }
 
-document.getElementById("video_button").addEventListener("click",
-hideElement(document.getElementById("video_button")), 
-showElement(document.getElementById("video")), 
-showElement(document.getElementById("upload_button")));
+window.addEventListener("DOMContentLoaded", function(){
+    var video = document.getElementById("video");
+    var up_btn =document.getElementById("upload_button");
+    var vid_btn = document.getElementById("video_button");
+    var up_pic = document.getElementById("upload_2");
+    //var up_pic = document.querySelector("#upload_2");
+    
+    document.getElementById("video_click").addEventListener("click",function(){
+        hideElement(vid_btn), 
+        showElement(video), 
+        showElement(up_btn),
+        hideElement(up_pic)
+    });
 
-document.getElementById("upload_button").addEventListener("click",
-hideElement(document.getElementById("video")), 
-hideElement(document.getElementById("upload_button")), 
-showElement(document.getElementById("video_button")));
+   
+    //console.log(video);
+    
+    document.getElementById("upload_click").addEventListener("click",function(){
+        
+        hideElement(video), 
+        showElement(up_pic), 
+        hideElement(up_btn), 
+        showElement(vid_btn)
+    });
+
+    document.getElementById('upload_button').addEventListener("change",function(){
+        document.getElementById('upload_2').src = window.URL.createObjectURL(this.files[0]);
+    });
+    
+
+
+});
 

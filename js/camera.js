@@ -23,7 +23,11 @@ function apply_filter(filter_name){
         filter.hidden = false;
 }
 var count = 0;
-(function() {
+
+//ONLY run if entire DOM is loaded
+
+//$(document).ready(function());
+window.addEventListener("DOMContentLoaded",function() {
     count++;
 
     var video = document.getElementById("video"),
@@ -43,7 +47,7 @@ var count = 0;
         video: true,
         audio: false
     }, function(stream) {
-        video.src = vendorUrl.createObjectURL(stream);
+        video.srcObject = stream;
         video.play();
     }, function(error) {
            //an error occured
@@ -82,6 +86,6 @@ var count = 0;
         });
         
 
-})();
+});
 
 
