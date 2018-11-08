@@ -7,13 +7,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<head>
 		<link rel="shortcut icon" typ="image/png" href="../resources/favicon.png"/>
-		<link rel="stylesheet" type="text/css"href="../font/web-fonts-with-css/css/fontawesome-all.min.css"><!--load all styles -->
+		<link rel="stylesheet" type="text/css"
+		href="../font/web-fonts-with-css/css/fontawesome-all.min.css">
 	</head>
 	<title>Gallery</title>
 	<link rel="stylesheet" href="../css/style.css">
 	<body>
 		<div>
-			<a class="links" href="#"onclick="window.history.back()"><img class="container-8" src="../resources/logo1.png"></a>
+			<a class="links" href="#"onclick="window.history.back()">
+				<img class="container-8" src="../resources/logo1.png">
+			</a>
 			</div>
 
 <!-- Photo Grid -->
@@ -56,7 +59,8 @@
 		</div>
 	  </div>
 
-			<a lass="links"href="https://github.com/luyandamncube"><div class="footer">© lmncube 2018</div></a>
+			<a lass="links"href="https://github.com/luyandamncube">
+			<div class="footer">© lmncube 2018</div></a>
 
 	</body>
 </html>

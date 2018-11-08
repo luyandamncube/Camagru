@@ -46,7 +46,7 @@
             <div class ="container-5"><input type="password" placeholder= " Confirm Password" class="input" name="confirmpassword"></input></div>
             <div class="container-11"><?php echo $confirmpasswordErr;?></div>
             <br>
-            <div class="container-4"><input type="submit" value="Sign me up!"></div>
+            <div class="container-4"><input class="submit_banner" type="submit" value="Sign me up!"></div>
         </form>     
    <a class="links"href="https://github.com/luyandamncube"><div class="footer">  © lmncube 2018</div></a>
 

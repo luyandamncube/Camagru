@@ -18,12 +18,13 @@
 	<div class="container-2"> CAMAGRU </div>
         <div class="container-3"> EDITOR </div>
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" name="login_form" method="POST">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" 
+            name="login_form" method="POST">
             <div class ="container-5"><textarea placeholder= " Username" class="textarea" name="loginname" ></textarea></div>
             <div class="container-11"><?php echo $loginameErr;?></div>
             <div class ="container-5"><input type="password" placeholder= " Password" class="input" name="loginpass"></input></div>
             <div class="container-11"><?php echo $loginpassErr;?></div>
-            <div class="container-4"><input type="submit" value="Login!"></div>
+            <div class="container-4"><input class="submit_banner" type="submit" value="Login!"></div>
         </form> 
         
    <a class="links"href="https://github.com/luyandamncube"><div class="footer">  © lmncube 2018</div></a>
