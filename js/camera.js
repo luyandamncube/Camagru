@@ -57,7 +57,7 @@ function ajaxpost(_1,_2,_3,_4,_5, _6,_7, currentpic){
     filt_4 = _4 ? document.getElementById("filt_4").src : "",
     filt_5 = _5 ? document.getElementById("filt_5").src : "",
     filt_6 = _6 ? document.getElementById("filt_6").src : "",
-    filt_7 = _7 ? document.getElementById("filt_7").src : "",
+    filt_7 = _7 ? document.getElementById("filt_7").src : "";
     
     /*
     switch(expression) {
@@ -71,21 +71,29 @@ function ajaxpost(_1,_2,_3,_4,_5, _6,_7, currentpic){
             code block
     }
     */
+   console.log(encodeURIComponent(currentpic));
+   console.log(currentpic);
+    // encodeURIComponent preserves URLs, Kay saved my life
     vars = "filter_1="+filt_1+"&filter_2="+filt_2+"&filter_3="+filt_3+"&filter_4="+filt_4
-    +"&filter_5="+filt_5+"&filter_6="+filt_6+"&filter_7="+filt_7+"&current="+currentpic;
+    +"&filter_5="+filt_5+"&filter_6="+filt_6+"&filter_7="+filt_7+"&current="+encodeURIComponent(currentpic);
+    
     
     hr.open("POST", url, true);
-   
     hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     // Access the onreadystatechange event for the XMLHttpRequest object
     hr.onreadystatechange = function() {
         if(hr.readyState == 4 && hr.status == 200) {
             var return_data = hr.responseText;
             document.getElementById("status").innerHTML = return_data;
+        } else
+        {
+            console.log("error: " + this.responseText);
         }
     }
+
     // Send the data to PHP now... and wait for response to update the status div
     hr.send(vars); // Actually execute the request
+    //console.log(vars);
     document.getElementById("status").innerHTML = "processing...";
 }
 
@@ -148,10 +156,10 @@ window.addEventListener("DOMContentLoaded",function() {
     });
     //SWITCH TO PICTURE UPLOAD
     document.getElementById("upload_click").addEventListener("click",function(){
-        //hideElement(video), 
-       // showElement(up_pic), 
-        ///hideElement(up_btn), 
-       // showElement(vid_btn),
+        hideElement(video),
+        showElement(up_pic), 
+        hideElement(up_btn),
+        showElement(vid_btn),
         cap_btn.hidden = false;
     });
     //DELETE CAMERA ROLL
@@ -176,8 +184,8 @@ window.addEventListener("DOMContentLoaded",function() {
 
         photo_container.setAttribute("class", "camera_roll_pic");
         context.drawImage(video, 0, 0, 400, 300); //Image from webcam
+        //canvas.getContext('2d');
         photo = document.createElement('img');
-         //photo = document.getElementById('img');
      if (isHidden(up_pic)){
             currentpic = canvas.toDataURL();
             photo.setAttribute("src", currentpic);
@@ -188,7 +196,6 @@ window.addEventListener("DOMContentLoaded",function() {
             photo.setAttribute("src", up_pic.src);
             currentpic = up_pic.src;
         } 
-        photo.setAttribute("src", canvas.toDataURL());
         photo.setAttribute("width", "80");
         photo.setAttribute("height", "70");
         photo.setAttribute("class", "camera_roll_pic");
