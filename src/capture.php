@@ -1,6 +1,6 @@
 <?php
 	include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/session.php';
-	include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/store.php';
+	//include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/merge.php';
 	if ($_SESSION['username'] == 'guest'){
 		header("Location: ../index.php");
 	}
@@ -20,7 +20,7 @@
 	</head>
 	<style>
 		body{
-			background-color : rgb(14, 15, 17);
+			background-color : white;/*rgb(14, 15, 17);*/
 		}
 	</style>
 	<body>
@@ -28,7 +28,7 @@
 			<div>
 				<img class="container-8" src="../resources/logo1.png" class="links" 
 				href="#"onclick="window.history.back()"></a>
-			</div><br>
+			</div>
 				<div class="container-10"style=" margin: 0 auto; width: 400px;">
 					<!-- Remove filter(s) -->
 					<a id="clear_all" class="links"href="#"><i class="fas fa-times-circle"></i></a>
@@ -61,38 +61,38 @@
 					<!-- filter_1 -->
 					<label>
 						<input id="filter_1" type="checkbox" name="filters" value="small"/>
-						<img class="choice" src="../filters/01.png">
+						<img id="filt_1" class="choice" src="../filters/01.png">
 					</label>
 
 					<!-- filter_2 -->
 					<label>
 						<input id="filter_2" type="checkbox" name="filters" value="small"/>
-						<img class="choice" src="../filters/02.png">
+						<img id="filt_2" class="choice" src="../filters/02.png">
 					</label>
 					<!-- filter_3 -->
 					<label>
 						<input id="filter_3" type="checkbox" name="filters" value="small" />
-						<img class="choice" src="../filters/03.png">
+						<img id="filt_3" class="choice" src="../filters/03.png">
 					</label>
 					<!-- filter_4 -->
 					<label>
 						<input id="filter_4" type="checkbox" name="filters" value="small" />
-						<img class="choice" src="../filters/04.png">
+						<img id="filt_4" class="choice" src="../filters/04.png">
 					</label>
 					<!-- filter_5 -->
 					<label>
 						<input id="filter_5"type="checkbox" name="filters" value="small" />
-						<img class="choice" src="../filters/05.png">
+						<img id="filt_5" class="choice" src="../filters/05.png">
 					</label>
 					<!-- filter_6 -->
 					<label>
 						<input id="filter_6"type="checkbox" name="filters" value="small" />
-						<img class="choice" src="../filters/06.png">
+						<img id="filt_6" class="choice" src="../filters/06.png">
 					</label>
 					<!-- filter_7 -->
 					<label>
 						<input id="filter_7"type="checkbox" name="filters" value="small" />
-						<img class="choice" src="../filters/07.png">
+						<img id="filt_7" class="choice" src="../filters/07.png">
 					</label>
 				</div>
 			</div>
@@ -110,15 +110,16 @@
 			<div class= "container-10" style="height: 40px;">
 				<a id="delete" class="links"href="#"><i class="fas fa-trash"></i></a>
 				<a id="capture" class="links"href="#"><i class="fas fa-camera"></i></a>
+	
 				<a id="save" class="links"href="#"><i class="fas fa-save"></i></a>
 			</div>
-			
+			<div id="status"></div>
 			<canvas id="canvas" width="400" height="400"> </canvas>
 
 		</div>
 		<div id="camera_roll">
 			<!-- new DOM images go here	-->
-		</div>
+					</div>
 	
     	
 <a class="links"href="https://github.com/luyandamncube"><div class="footer">© lmncube 2018</div></a>

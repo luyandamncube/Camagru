@@ -43,6 +43,52 @@ function clickme($element, $value){
         $el.value = $value;
     }
 }
+
+function ajaxpost(_1,_2,_3,_4,_5, _6,_7, currentpic){
+    // Create our XMLHttpRequest object
+    var hr = new XMLHttpRequest();
+    // Create some variables we need to send to our PHP file
+    var url = "../src/merge.php";
+
+    //var userType = userIsYoungerThan18 ? "Minor" : "Adult";
+    var filt_1 = _1 ? document.getElementById("filt_1").src : "",
+    filt_2 = _2 ? document.getElementById("filt_2").src : "",
+    filt_3 = _3 ? document.getElementById("filt_3").src : "",
+    filt_4 = _4 ? document.getElementById("filt_4").src : "",
+    filt_5 = _5 ? document.getElementById("filt_5").src : "",
+    filt_6 = _6 ? document.getElementById("filt_6").src : "",
+    filt_7 = _7 ? document.getElementById("filt_7").src : "",
+    
+    /*
+    switch(expression) {
+        case x:
+            code block
+            break;
+        case y:
+            code block
+            break;
+        default:
+            code block
+    }
+    */
+    vars = "filter_1="+filt_1+"&filter_2="+filt_2+"&filter_3="+filt_3+"&filter_4="+filt_4
+    +"&filter_5="+filt_5+"&filter_6="+filt_6+"&filter_7="+filt_7+"&current="+currentpic;
+    
+    hr.open("POST", url, true);
+   
+    hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // Access the onreadystatechange event for the XMLHttpRequest object
+    hr.onreadystatechange = function() {
+        if(hr.readyState == 4 && hr.status == 200) {
+            var return_data = hr.responseText;
+            document.getElementById("status").innerHTML = return_data;
+        }
+    }
+    // Send the data to PHP now... and wait for response to update the status div
+    hr.send(vars); // Actually execute the request
+    document.getElementById("status").innerHTML = "processing...";
+}
+
 //ONLY run if entire DOM is loaded
 
 //$(document).ready(function());
@@ -50,12 +96,13 @@ window.addEventListener("DOMContentLoaded",function() {
      var video = document.getElementById("video"),
         canvas = document.getElementById("canvas"),
         context = canvas.getContext("2d"),
-        video = document.getElementById("video"),
+        // video = document.getElementById("video"),
         up_btn =document.getElementById("upload_button"),
         vid_btn = document.getElementById("video_button"),
         cap_btn = document.getElementById("capture"),
         up_pic = document.getElementById("upload_2"),
         has_webcam = true,
+
         camera_roll = document.getElementById("camera_roll"); 
         count = 0, 
         vendorUrl = window.URL || window.webkitURL;
@@ -89,8 +136,8 @@ window.addEventListener("DOMContentLoaded",function() {
     });
     //SWITCH TO CAMERA
     document.getElementById("video_click").addEventListener("click",function(){
-        hideElement(vid_btn), 
-        showElement(video), 
+        hideElement(vid_btn),
+        showElement(video),
         showElement(up_btn),
         hideElement(up_pic),
         removeSauce(up_pic);
@@ -101,36 +148,55 @@ window.addEventListener("DOMContentLoaded",function() {
     });
     //SWITCH TO PICTURE UPLOAD
     document.getElementById("upload_click").addEventListener("click",function(){
-        hideElement(video), 
-        showElement(up_pic), 
-        hideElement(up_btn), 
-        showElement(vid_btn),
+        //hideElement(video), 
+       // showElement(up_pic), 
+        ///hideElement(up_btn), 
+       // showElement(vid_btn),
         cap_btn.hidden = false;
     });
     //DELETE CAMERA ROLL
     document.getElementById("delete").addEventListener("click", function(){
         var deleteme = document.getElementById("camera_roll");
         deleteme.innerHTML="";
-        count = 0
+        count = 0;
     }
     );    
     //TAKE PICTURE
     document.getElementById("capture").addEventListener("click", function(){
-        context.drawImage(video, 0, 0, 400, 300); //Image from webcam
-        var photo_container = document.createElement('div');
+
+        var photo_container = document.createElement('div'),
+        currentpic = "",
+        _1 = document.getElementById("filter_1").checked,
+        _2 = document.getElementById("filter_2").checked,
+        _3 = document.getElementById("filter_3").checked,
+        _4 = document.getElementById("filter_4").checked,
+        _5 = document.getElementById("filter_5").checked,
+        _6 = document.getElementById("filter_6").checked,
+        _7 = document.getElementById("filter_7").checked;
+
         photo_container.setAttribute("class", "camera_roll_pic");
+        context.drawImage(video, 0, 0, 400, 300); //Image from webcam
         photo = document.createElement('img');
-        if (isHidden(up_pic)){
-            //console.log();
-            photo.setAttribute("src", canvas.toDataURL("image/jpg"));
+         //photo = document.getElementById('img');
+     if (isHidden(up_pic)){
+            currentpic = canvas.toDataURL();
+            photo.setAttribute("src", currentpic);
+
+
+            
         } else{
             photo.setAttribute("src", up_pic.src);
-        }
+            currentpic = up_pic.src;
+        } 
+        photo.setAttribute("src", canvas.toDataURL());
         photo.setAttribute("width", "80");
         photo.setAttribute("height", "70");
         photo.setAttribute("class", "camera_roll_pic");
         photo.setAttribute("id", count++);
         camera_roll.insertBefore(photo, camera_roll.firstElementChild);
+
+        //AJAX POST
+        ajaxpost(_1,_2,_3,_4,_5, _6,_7, currentpic);
         console.log(count);
     });   
     //SAVE ALL PICTURES
@@ -168,10 +234,8 @@ window.addEventListener("DOMContentLoaded",function() {
         var filter_1 = document.getElementById("filter_1").checked;
         if (filter_1) {
             addFilter("filter_overlay", "img", "filter_1_pic", "../filters/101.png");
-            console.log(filter_1);
         } else {
             removeElement( "filter_1_pic");
-            console.log(filter_1);
         }
     });
     document.getElementById("filter_2").addEventListener('change', function(){
