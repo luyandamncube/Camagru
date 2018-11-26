@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="resources/logo.png"/>
+  <img src="resources/007.png"/>
 </p>
 
 # wethinkcode_ Johannesburg
