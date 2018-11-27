@@ -13,7 +13,7 @@ body{background: #1F222B;}
 /* LOGO */.container-1{opacity:0.6;}
 /* CAMAGRU */.container-2{color:white;font-weight:700;letter-spacing:8px;background:#1F222B;}
 /* EDITOR */.container-3{color:#6ab04c;}
-/*green banner */.container-4{color:white;background-color:#6ab04c;opacity:0.6;justify-content:center;font-size:calc(6px + 1vw + 1vh);}
+/* green banner */.container-4{color:white;background-color:#6ab04c;opacity:0.6;justify-content:center;font-size:calc(6px + 1vw + 1vh);}
 /* Input boxes */.container-5{color:white;}
 /* Login button*/.container-6{color:white;font-size: 100%;justify-content:flex-end;opacity: 0.6;}
 /* Signup button */.container-7{color:white;font-size: 100%;justify-content:flex-start;opacity: 0.6;}

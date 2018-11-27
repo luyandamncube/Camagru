@@ -51,13 +51,13 @@ function ajaxpost(_1,_2,_3,_4,_5, _6,_7, currentpic){
     var url = "../src/merge.php";
 
     //var userType = userIsYoungerThan18 ? "Minor" : "Adult";
-    var filt_1 = _1 ? document.getElementById("filt_1").src : "",
-    filt_2 = _2 ? document.getElementById("filt_2").src : "",
-    filt_3 = _3 ? document.getElementById("filt_3").src : "",
-    filt_4 = _4 ? document.getElementById("filt_4").src : "",
-    filt_5 = _5 ? document.getElementById("filt_5").src : "",
-    filt_6 = _6 ? document.getElementById("filt_6").src : "",
-    filt_7 = _7 ? document.getElementById("filt_7").src : "";
+    var filt_1 = _1 ? "../filters/101.png" : "",
+    filt_2 = _2 ? "../filters/102.png" : "",
+    filt_3 = _3 ? "../filters/103.png" : "",
+    filt_4 = _4 ? "../filters/104.png" : "",
+    filt_5 = _5 ? "../filters/105.png" : "",
+    filt_6 = _6 ? "../filters/106.png" : "",
+    filt_7 = _7 ? "../filters/107.png" : "";
     
     /*
     switch(expression) {
@@ -187,12 +187,12 @@ window.addEventListener("DOMContentLoaded",function() {
         //canvas.getContext('2d');
         photo = document.createElement('img');
      if (isHidden(up_pic)){
+            //video
             currentpic = canvas.toDataURL();
-            photo.setAttribute("src", currentpic);
-
-
-            
+            photo.setAttribute("src", currentpic); 
         } else{
+            //upload
+            context.drawImage(up_pic, 0, 0, 400, 300);
             photo.setAttribute("src", up_pic.src);
             currentpic = up_pic.src;
         } 
@@ -231,10 +231,55 @@ window.addEventListener("DOMContentLoaded",function() {
         }
 
     });
+    /*
+    var video = document.querySelector("#videoElement");
+   document.querySelector("input[type='submit']").disabled = true;
+   document.querySelector("input[name='clear_input']").disabled = true;
+   var vidStream;
+   var reader = new FileReader();
+   var btnDrag = document.querySelector("#toggleDrag");
+   var btnResize = document.querySelector("#toggleResize");
+    document.querySelector("input[name='clear_input']").addEventListener("click", function () {
+       this.parentNode.parentNode.reset();
+       video.setAttribute("src", "");
+       video.parentNode.style.display = "none";
+       video = document.querySelector("#videoElement");
+       video.style.display = "block";
+       document.querySelector("input[type='submit']").disabled = true;
+       this.disabled = true;
+   });
+   document.querySelector("input[type='file']").addEventListener("change", function ()
+   {
+       files = this.files;
+       if (files.length != 0)
+       {
+           video.style.display = "none";
+           video = document.querySelector("#img_input");
+           //reader.readAsDataURL(files[0]);
+           video.parentNode.style.display = "block";
+           reader.addEventListener("load", function () {
+               video.src = reader.result;
+           }, false);
+           if (files[0]) {
+               reader.readAsDataURL(files[0]);
+           }
+           document.querySelector("input[type='submit']").disabled = false;
+           document.querySelector("input[name='clear_input']").disabled = false;
+       }
+
+
+    */
 
     document.getElementById('upload_button').addEventListener("change",function(){
-        up_pic.src = window.URL.createObjectURL(this.files[0])
-        //console.log(this.files[0])
+        //Set upa a reader that converts media to base64
+        var reader =  new FileReader();
+
+        reader.addEventListener("load", function(){
+            up_pic.src = reader.result;
+        }), false;
+        if (this.files[0]){
+            reader.readAsDataURL(this.files[0]);
+        }
     });
 
     document.getElementById("filter_1").addEventListener('change', function(){
