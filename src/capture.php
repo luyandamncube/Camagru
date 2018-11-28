@@ -46,7 +46,7 @@
 
 			<div class="camera" >
 				<!-- OVERLAY 1 -->
-				<div id="filter_overlay">
+				<div style="" id="filter_overlay">
 					<!-- new DOM images go here	-->
 				</div>
 				<!-- OVERLAY 2 -->
@@ -98,10 +98,8 @@
 			</div>
 
 			<div style= "height : 400px;" >
-				<video style="    transform: rotateY(180deg);
-						-webkit-transform:rotateY(180deg);
-						-moz-transform:rotateY(180deg)"id="video" 
-						width="400" height="400" src="">
+				<video style=""id="video" 
+						width="400" height="300" src="">
 				</video>
 				<img alt="" id="upload_2" style="height : 400px; 
 				width : 400px; position : absolute; z-index: -20;" hidden="true"src="">
@@ -114,7 +112,7 @@
 				<a id="save" class="links"href="#"><i class="fas fa-save"></i></a>
 			</div>
 			<div id="status"></div>
-			<canvas id="canvas" width="400" height="400"> </canvas>
+			<canvas id="canvas" width="400" height="300"> </canvas>
 
 		</div>
 		<div id="camera_roll">

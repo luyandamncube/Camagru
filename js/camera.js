@@ -171,7 +171,7 @@ window.addEventListener("DOMContentLoaded",function() {
     );    
     //TAKE PICTURE
     document.getElementById("capture").addEventListener("click", function(){
-
+        //Create new DOM images in camera roll
         var photo_container = document.createElement('div'),
         currentpic = "",
         _1 = document.getElementById("filter_1").checked,
@@ -184,7 +184,6 @@ window.addEventListener("DOMContentLoaded",function() {
 
         photo_container.setAttribute("class", "camera_roll_pic");
         context.drawImage(video, 0, 0, 400, 300); //Image from webcam
-        //canvas.getContext('2d');
         photo = document.createElement('img');
      if (isHidden(up_pic)){
             //video
@@ -196,8 +195,8 @@ window.addEventListener("DOMContentLoaded",function() {
             photo.setAttribute("src", up_pic.src);
             currentpic = up_pic.src;
         } 
-        photo.setAttribute("width", "80");
-        photo.setAttribute("height", "70");
+        //photo.setAttribute("width", "80");
+        photo.setAttribute("height", "60");
         photo.setAttribute("class", "camera_roll_pic");
         photo.setAttribute("id", count++);
         camera_roll.insertBefore(photo, camera_roll.firstElementChild);
@@ -231,44 +230,6 @@ window.addEventListener("DOMContentLoaded",function() {
         }
 
     });
-    /*
-    var video = document.querySelector("#videoElement");
-   document.querySelector("input[type='submit']").disabled = true;
-   document.querySelector("input[name='clear_input']").disabled = true;
-   var vidStream;
-   var reader = new FileReader();
-   var btnDrag = document.querySelector("#toggleDrag");
-   var btnResize = document.querySelector("#toggleResize");
-    document.querySelector("input[name='clear_input']").addEventListener("click", function () {
-       this.parentNode.parentNode.reset();
-       video.setAttribute("src", "");
-       video.parentNode.style.display = "none";
-       video = document.querySelector("#videoElement");
-       video.style.display = "block";
-       document.querySelector("input[type='submit']").disabled = true;
-       this.disabled = true;
-   });
-   document.querySelector("input[type='file']").addEventListener("change", function ()
-   {
-       files = this.files;
-       if (files.length != 0)
-       {
-           video.style.display = "none";
-           video = document.querySelector("#img_input");
-           //reader.readAsDataURL(files[0]);
-           video.parentNode.style.display = "block";
-           reader.addEventListener("load", function () {
-               video.src = reader.result;
-           }, false);
-           if (files[0]) {
-               reader.readAsDataURL(files[0]);
-           }
-           document.querySelector("input[type='submit']").disabled = false;
-           document.querySelector("input[name='clear_input']").disabled = false;
-       }
-
-
-    */
 
     document.getElementById('upload_button').addEventListener("change",function(){
         //Set upa a reader that converts media to base64
