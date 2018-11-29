@@ -68,7 +68,7 @@
 				<a href="#" class="links"onclick="clickme('change_pass', '<?php echo $_SESSION['pass']?>'); "> 
 				<i style="font-size: calc(4px + 1vw + 1vh);" class="fas fa-edit"></i></a>
 				<input type ="password" placeholder= "Change Password" name="new_password" class="textarea"
-				 id='change_pass' disabled style="enabled: false; background-color: #1F222B;"> </input> 
+				 id='change_pass' disabled style="enabled: false; background-color: #1F222B;"> 
 			</div>
 			<div class="container-11"><?php echo $new_passwordErr?></div>
 

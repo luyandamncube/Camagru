@@ -46,7 +46,9 @@
 
 			<div class="camera" >
 				<!-- OVERLAY 1 -->
-				<div style="" id="filter_overlay">
+				<div style="  transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+    -moz-transform:rotateY(180deg); /* Firefox */" id="filter_overlay">
 					<!-- new DOM images go here	-->
 				</div>
 				<!-- OVERLAY 2 -->
@@ -117,7 +119,8 @@
 		</div>
 		<div id="camera_roll">
 			<!-- new DOM images go here	-->
-					</div>
+			
+		</div>
 	
     	
 <a class="links"href="https://github.com/luyandamncube"><div class="footer">© lmncube 2018</div></a>

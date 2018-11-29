@@ -1,6 +1,4 @@
-<?php
 
-?>
 <!DOCTYPE html>
 <html>
 	<meta charset="UTF-8">
@@ -19,7 +17,7 @@
 			</a>
 			</div>
 
-<!-- Photo Grid -->
+<!-- Photo Grid 
 <div class="row"> 
 		<div class="column">
 			<img src="../resources/placeholder.jpg" style="width:100%">
@@ -58,7 +56,8 @@
 		  <img src="../resources/placeholder.jpg" style="width:100%">
 		</div>
 	  </div>
-
+-->
+<?php include 'display_photos.php'?>
 			<a lass="links"href="https://github.com/luyandamncube">
 			<div class="footer">© lmncube 2018</div></a>
 
