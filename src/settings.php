@@ -12,7 +12,7 @@
 		<title>Settings</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script src="../js/elements.js"></script>
+		<script src="../js/camera.js"></script>
 		<link rel="shortcut icon" typ="image/png" href="../resources/favicon.png"/>
 		<link rel="stylesheet" href="../css/style.css">
 		<link rel="stylesheet" type="text/css"

@@ -35,19 +35,36 @@ try{
         $db->exec($sql);
         $database->closeConnection();
 
+        //Create images table
         //SQL using "mysql:host=localhost;dbname=db"
         $sql = "CREATE TABLE IF NOT EXISTS `db`.`images` ( 
-            `pic_num` INT NOT NULL , 
+            `pic_num` VARCHAR(255) NOT NULL , 
             `username` VARCHAR(255) NOT NULL , 
             `picture` LONGBLOB NOT NULL , 
             `likes` INT NOT NULL , 
-            PRIMARY KEY (`username`)
+            PRIMARY KEY (`pic_num`)
             ) ENGINE = InnoDB;";
         $db->exec($sql);
 
         //Add foreign Key to images table
         $sql = "ALTER TABLE `images` 
         ADD CONSTRAINT uploadedby_FK 
+        FOREIGN KEY (`username`) 
+        REFERENCES `users` (`username`);";
+        $db->exec($sql);
+
+        //Create likes table 
+        $sql = "CREATE TABLE IF NOT EXISTS `db`.`likes` ( 
+            `like_num` INT NOT NULL , 
+            `username` VARCHAR(255) NOT NULL , 
+            `likes` INT NOT NULL , 
+            PRIMARY KEY (`like_num`)
+            ) ENGINE = InnoDB;";
+        $db->exec($sql);
+
+        //Add foreign Key to images table
+        $sql = "ALTER TABLE `likes` 
+        ADD CONSTRAINT likedby_FK 
         FOREIGN KEY (`username`) 
         REFERENCES `users` (`username`);";
         $db->exec($sql);

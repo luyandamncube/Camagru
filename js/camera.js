@@ -1,3 +1,4 @@
+//var status_bar = document.getElementById("status");
 function isHidden(el) {
     var style = window.getComputedStyle(el);
     return (style.display === 'none')
@@ -30,52 +31,6 @@ function removeFilters(){
     }
     overlay.innerHTML = "";
 }
-/*
-    -----Drag Element Section-----
-    */
-   function dragElement(elmnt) {
-    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    if (document.getElementById(elmnt.id + "header")) {
-        // if present, the header is where you move the DIV from:
-        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-    } else {
-        // otherwise, move the DIV from anywhere inside the DIV:
-        elmnt.onmousedown = dragMouseDown;
-        //console.log(elmnt);
-    }
-
-    function dragMouseDown(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // get the mouse cursor position at startup:
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        elmnt.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves:
-        elmnt.onmousemove = elementDrag;
-    }
-
-    function elementDrag(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // calculate the new cursor position:
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        // set the element's new position:
-        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-        //console.log("I am dragged");
-
-    }
-
-    function closeDragElement() {
-        // stop moving when mouse button is released:
-        elmnt.onmouseup = null;
-        elmnt.onmousemove = null;
-    }
-}
 
 function addFilter(parentId, elementTag, elementId, src) {
     var newElement = document.createElement(elementTag);
@@ -85,7 +40,7 @@ function addFilter(parentId, elementTag, elementId, src) {
     parentId = document.getElementById(parentId);
     parentId.insertBefore(newElement, parentId.firstElementChild);
     newElement.style.zindex = "5000";
-    dragElement(newElement);
+    
 }
 function clickme($element, $value){
     $el = document.getElementById($element);
@@ -102,6 +57,56 @@ function clickme($element, $value){
     }
 }
 
+ //AJAX FUNCTIONALITY
+ function ajaxpost(_1,_2,_3,_4,_5, _6,_7, currentpic, photo){
+    // Create our XMLHttpRequest object
+    var hr = new XMLHttpRequest();
+    // Create some variables we need to send to our PHP file
+    var url = "../src/merge.php";
+    var filt_1 = _1 ? "../filters/101.png" : "",
+    filt_2 = _2 ? "../filters/102.png" : "",
+    filt_3 = _3 ? "../filters/103.png" : "",
+    filt_4 = _4 ? "../filters/104.png" : "",
+    filt_5 = _5 ? "../filters/105.png" : "",
+    filt_6 = _6 ? "../filters/106.png" : "",
+    filt_7 = _7 ? "../filters/107.png" : "",
+    //console.log("Inside ajax bind: "+ this);
+
+    // encodeURIComponent preserves URLs, Kay saved my life
+    vars = "filter_1="+filt_1+"&filter_2="+filt_2+"&filter_3="+filt_3+"&filter_4="+filt_4
+    +"&filter_5="+filt_5+"&filter_6="+filt_6+"&filter_7="+filt_7+"&current="+encodeURIComponent(currentpic)+"&photo_id="+photo.getAttribute("id");
+    
+    
+    hr.open("POST", url, true);
+    hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // Access the onreadystatechange event for the XMLHttpRequest object
+
+    hr.onreadystatechange = function(image)
+    {
+        if(hr.readyState == 4 && hr.status == 200) {
+            //alert(this.responseText);
+             arr_json = JSON.parse(this.responseText);
+            if (arr_json["status"] == "success"){
+                
+               image.setAttribute("id", arr_json["username"] + "_"+image.getAttribute("id"));
+               image.setAttribute("src", "data:image/png;base64,"+arr_json["src"]);
+            }
+            else{
+                window.alert(arr_json["status"]);
+            }
+            var return_data = hr.responseText;
+            status_bar.innerHTML = arr_json["status"];
+        } else  {
+            //console.log("error: " + this.responseText);
+        }
+        //bind responsetext event to photo. Fred is a G
+    }.bind(hr, photo);
+
+    // Send the data to PHP now... and wait for response to update the status div
+    hr.send(vars); // Actually execute the request
+    //console.log(vars);
+    //status_bar.innerHTML = "processing...";
+}
 
 
 //ONLY run if entire DOM is loaded
@@ -131,7 +136,6 @@ window.addEventListener("DOMContentLoaded",function() {
         save_click = document.getElementById("save"),
         up_pic = document.getElementById("upload_2"),
         camera_roll = document.getElementById("camera_roll"),
-        status_bar = document.getElementById("status"),
         has_webcam = true,
         arr_json,  
         count = 0, 
@@ -154,60 +158,6 @@ window.addEventListener("DOMContentLoaded",function() {
            //error.code
     });
 
-
-    //AJAX FUNCTIONALITY
-    function ajaxpost(_1,_2,_3,_4,_5, _6,_7, currentpic, photo){
-        // Create our XMLHttpRequest object
-        var hr = new XMLHttpRequest();
-        // Create some variables we need to send to our PHP file
-        var url = "../src/merge.php";
-        //var userType = userIsYoungerThan18 ? "Minor" : "Adult";
-        var filt_1 = _1 ? "../filters/101.png" : "",
-        filt_2 = _2 ? "../filters/102.png" : "",
-        filt_3 = _3 ? "../filters/103.png" : "",
-        filt_4 = _4 ? "../filters/104.png" : "",
-        filt_5 = _5 ? "../filters/105.png" : "",
-        filt_6 = _6 ? "../filters/106.png" : "",
-        filt_7 = _7 ? "../filters/107.png" : "";
-        //console.log("Inside ajax bind: "+ this);
-
-        // encodeURIComponent preserves URLs, Kay saved my life
-        vars = "filter_1="+filt_1+"&filter_2="+filt_2+"&filter_3="+filt_3+"&filter_4="+filt_4
-        +"&filter_5="+filt_5+"&filter_6="+filt_6+"&filter_7="+filt_7+"&current="+encodeURIComponent(currentpic)+"&photo_id="+photo.getAttribute("id");
-        
-        
-        hr.open("POST", url, true);
-        hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        // Access the onreadystatechange event for the XMLHttpRequest object
-    
-        hr.onreadystatechange = function(image)
-        {
-            if(hr.readyState == 4 && hr.status == 200) {
-                //alert(this.responseText);
-                 arr_json = JSON.parse(this.responseText);
-                if (arr_json["status"] == "success"){
-                    
-                   image.setAttribute("id", arr_json["username"] + "_"+image.getAttribute("id"));
-                   image.setAttribute("src", "data:image/png;base64,"+arr_json["src"]);
-                }
-                else
-                {
-                    window.alert(arr["status"]);
-                }
-                var return_data = hr.responseText;
-                status_bar.innerHTML = arr_json["status"];
-            } else  {
-                //console.log("error: " + this.responseText);
-            }
-            //bind responsetext event to photo. Fred is a G
-        }.bind(hr, photo);
-    
-        // Send the data to PHP now... and wait for response to update the status div
-        hr.send(vars); // Actually execute the request
-        //console.log(vars);
-        status_bar.innerHTML = "processing...";
-    }
-    
     //REMOVE FILTERS
     clear_btn.addEventListener('click', function(){
         removeFilters();
