@@ -57,7 +57,10 @@
 		</div>
 	  </div>
 -->
-<?php include 'display_photos.php'?>
+<?php 
+	include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/session.php';
+	include 'display_all.php';
+	?>
 			<a lass="links"href="https://github.com/luyandamncube">
 			<div class="footer">© lmncube 2018</div></a>
 

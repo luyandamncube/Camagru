@@ -21,7 +21,15 @@ function removeElement(elementId) {
     var element = document.getElementById(elementId);
     element.parentNode.removeChild(element);
 }
-
+function removeFilters(){
+    var filter_ = "",
+    overlay = document.getElementById("filter_overlay");
+    for (k = 1; k < 8 ; k++){
+       filter_ = "filter_"+k;
+        document.getElementById(filter_).checked = false;  
+    }
+    overlay.innerHTML = "";
+}
 /*
     -----Drag Element Section-----
     */
@@ -101,7 +109,6 @@ function clickme($element, $value){
 //$(document).ready(function());
 window.addEventListener("DOMContentLoaded",function() {
 
-    
      var video = document.getElementById("video"),
         canvas = document.getElementById("canvas"),
         context = canvas.getContext("2d"),
@@ -109,11 +116,24 @@ window.addEventListener("DOMContentLoaded",function() {
         up_btn =document.getElementById("upload_button"),
         vid_btn = document.getElementById("video_button"),
         cap_btn = document.getElementById("capture"),
+        clear_btn = document.getElementById("clear_all"),
+        del_btn = document.getElementById("delete"),
+        filt_btns = document.getElementById("filter_buttons"),
+        filter_1 = document.getElementById("filter_1"),
+        filter_2 = document.getElementById("filter_2"),
+        filter_3 = document.getElementById("filter_3"),
+        filter_4 = document.getElementById("filter_4"),
+        filter_5 = document.getElementById("filter_5"),
+        filter_6 = document.getElementById("filter_6"),
+        filter_7 = document.getElementById("filter_7"),
+        vid_click = document.getElementById("video_click"),
+        up_click = document.getElementById("upload_click"), 
+        save_click = document.getElementById("save"),
         up_pic = document.getElementById("upload_2"),
+        camera_roll = document.getElementById("camera_roll"),
+        status_bar = document.getElementById("status"),
         has_webcam = true,
-        arr_json, 
-
-        camera_roll = document.getElementById("camera_roll"); 
+        arr_json,  
         count = 0, 
         vendorUrl = window.URL || window.webkitURL;
 
@@ -150,20 +170,7 @@ window.addEventListener("DOMContentLoaded",function() {
         filt_6 = _6 ? "../filters/106.png" : "",
         filt_7 = _7 ? "../filters/107.png" : "";
         //console.log("Inside ajax bind: "+ this);
-        /*
-        switch(expression) {
-            case x:
-                code block
-                break;
-            case y:
-                code block
-                break;
-            default:
-                code block
-        }
-        */
-       //console.log(encodeURIComponent(currentpic));
-       //console.log(currentpic);
+
         // encodeURIComponent preserves URLs, Kay saved my life
         vars = "filter_1="+filt_1+"&filter_2="+filt_2+"&filter_3="+filt_3+"&filter_4="+filt_4
         +"&filter_5="+filt_5+"&filter_6="+filt_6+"&filter_7="+filt_7+"&current="+encodeURIComponent(currentpic)+"&photo_id="+photo.getAttribute("id");
@@ -188,7 +195,7 @@ window.addEventListener("DOMContentLoaded",function() {
                     window.alert(arr["status"]);
                 }
                 var return_data = hr.responseText;
-                document.getElementById("status").innerHTML = arr_json["status"];
+                status_bar.innerHTML = arr_json["status"];
             } else  {
                 //console.log("error: " + this.responseText);
             }
@@ -198,59 +205,56 @@ window.addEventListener("DOMContentLoaded",function() {
         // Send the data to PHP now... and wait for response to update the status div
         hr.send(vars); // Actually execute the request
         //console.log(vars);
-        document.getElementById("status").innerHTML = "processing...";
+        status_bar.innerHTML = "processing...";
     }
     
     //REMOVE FILTERS
-    document.getElementById("clear_all").addEventListener('click', function(){
-       
-        var filter_ = "";
-        for (k = 1; k < 8 ; k++){
-           filter_ = "filter_"+k;
-            document.getElementById(filter_).checked = false;  
-        }
-        document.getElementById("filter_overlay").innerHTML = "";
+    clear_btn.addEventListener('click', function(){
+        removeFilters();
     });
     //SWITCH TO CAMERA
-    document.getElementById("video_click").addEventListener("click",function(){
+    vid_click.addEventListener("click",function(){
         hideElement(vid_btn),
         showElement(video),
         showElement(up_btn),
         hideElement(up_pic),
         removeSauce(up_pic);
+        filt_btns.setAttribute("style", "display: ;");
         if (has_webcam == false){
             cap_btn.hidden = true;
         }
  
     });
     //SWITCH TO PICTURE UPLOAD
-    document.getElementById("upload_click").addEventListener("click",function(){
+    up_click.addEventListener("click",function(){
         hideElement(video),
         showElement(up_pic), 
         hideElement(up_btn),
         showElement(vid_btn),
         cap_btn.hidden = false;
+        removeFilters(),
+        hideElement(filt_btns);
     });
     //DELETE CAMERA ROLL
-    document.getElementById("delete").addEventListener("click", function(){
-        var deleteme = document.getElementById("camera_roll");
-        deleteme.innerHTML="";
+    del_btn .addEventListener("click", function(){
+        
+        camera_roll.innerHTML="";
         count = 0;
     }
     );    
     //TAKE PICTURE
-    document.getElementById("capture").addEventListener("click", function(){
+    cap_btn.addEventListener("click", function(){
         //Create new DOM images in camera roll
         var photo_container = document.createElement('div'),
         currentpic = "",
         photo_id = Date.now(),  
-        _1 = document.getElementById("filter_1").checked,
-        _2 = document.getElementById("filter_2").checked,
-        _3 = document.getElementById("filter_3").checked,
-        _4 = document.getElementById("filter_4").checked,
-        _5 = document.getElementById("filter_5").checked,
-        _6 = document.getElementById("filter_6").checked,
-        _7 = document.getElementById("filter_7").checked;
+        _1 = filter_1.checked,
+        _2 = filter_2.checked,
+        _3 = filter_3.checked,
+        _4 = filter_4.checked,
+        _5 = filter_5.checked,
+        _6 = filter_6.checked,
+        _7 = filter_7.checked;
 
         photo_container.setAttribute("class", "camera_roll_pic");
         context.drawImage(video, 0, 0, 400, 300); //Image from webcam
@@ -258,6 +262,8 @@ window.addEventListener("DOMContentLoaded",function() {
      if (isHidden(up_pic)){
             //video
             currentpic = canvas.toDataURL();
+            photo.setAttribute("style", "transform: rotateY(180deg);-webkit-transform:rotateY(180deg); /* Safari and Chrome */-moz-transform:rotateY(180deg); /* Firefox */");
+       
            // photo.setAttribute("src", currentpic); 
         } else{
             //upload
@@ -278,33 +284,7 @@ window.addEventListener("DOMContentLoaded",function() {
              
         
     });   
-    //SAVE ALL PICTURES
-    document.getElementById("save").addEventListener("click",function(){
-        var gal = document.querySelector("#camera_roll"),
-
-            child = gal.children,
-            k = 0;
-
-            //document.getElementById('gender_Male').checked
-            console.log(filter_1);
-            console.log(filter_2);
-            console.log(filter_3);
-            console.log(filter_4);
-            console.log(filter_5);
-            console.log(filter_6);
-            console.log(filter_7);
-            
-            camera_roll.innerHTML = "";
-            count = 0;
-        //access each child node
-        while (typeof child[k] !== 'undefined'){
-            console.log(child[k]);
-            k++;
-        }
-
-    });
-
-    document.getElementById('upload_button').addEventListener("change",function(){
+    up_btn.addEventListener("change",function(){
         //Set upa a reader that converts media to base64
         var reader =  new FileReader();
 
@@ -316,57 +296,57 @@ window.addEventListener("DOMContentLoaded",function() {
         }
     });
 
-    document.getElementById("filter_1").addEventListener('change', function(){
-        var filter_1 = document.getElementById("filter_1").checked;
-        if (filter_1) {
+    filter_1.addEventListener('change', function(){
+        var checked_1 = filter_1.checked;
+        if (checked_1) {
             addFilter("filter_overlay", "img", "filter_1_pic", "../filters/101.png");
         } else {
             removeElement( "filter_1_pic");
         }
     });
-    document.getElementById("filter_2").addEventListener('change', function(){
-        var filter_2 = document.getElementById("filter_2").checked;
-        if (filter_2) {
+    filter_2.addEventListener('change', function(){
+        var checked_2 = filter_2.checked;
+        if (checked_2) {
             addFilter("filter_overlay", "img", "filter_2_pic", "../filters/102.png")
         } else {
             removeElement( "filter_2_pic");
         }
     });
-    document.getElementById("filter_3").addEventListener('change', function(){
-        var filter_3 = document.getElementById("filter_3").checked;
-        if (filter_3) {
+    filter_3.addEventListener('change', function(){
+        var checked_3 = filter_3.checked;
+        if (checked_3) {
             addFilter("filter_overlay", "img", "filter_3_pic", "../filters/103.png")
         } else {
             removeElement( "filter_3_pic");
         }
     });
-    document.getElementById("filter_4").addEventListener('change', function(){
-        var filter_4 = document.getElementById("filter_4").checked;
-        if (filter_4) {
+    filter_4.addEventListener('change', function(){
+        var checked_4 = filter_4.checked;
+        if (checked_4) {
             addFilter("filter_overlay", "img", "filter_4_pic", "../filters/104.png")
         } else {
             removeElement( "filter_4_pic");
         }
     });
-    document.getElementById("filter_5").addEventListener('change', function(){
-        var filter_5 = document.getElementById("filter_5").checked;
-        if (filter_5) {
+    filter_5.addEventListener('change', function(){
+        var checked_5 = filter_5.checked;
+        if (checked_5) {
             addFilter("filter_overlay", "img", "filter_5_pic", "../filters/105.png")
         } else {
             removeElement( "filter_5_pic");
         }
     });
-    document.getElementById("filter_6").addEventListener('change', function(){
-        var filter_6 = document.getElementById("filter_6").checked;
-        if (filter_6) {
+    filter_6.addEventListener('change', function(){
+        var checked_6 = filter_6.checked;
+        if (checked_6) {
             addFilter("filter_overlay", "img", "filter_6_pic", "../filters/106.png")
         } else {
             removeElement( "filter_6_pic");
         }
     });
-    document.getElementById("filter_7").addEventListener('change', function(){
-        var filter_7 = document.getElementById("filter_7").checked;
-        if (filter_7) {
+    filter_7.addEventListener('change', function(){
+        var checked_7 = filter_7.checked;
+        if (checked_7) {
             addFilter("filter_overlay", "img", "filter_7_pic", "../filters/107.png")
         } else {
             removeElement( "filter_7_pic");

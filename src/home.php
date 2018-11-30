@@ -4,9 +4,7 @@
     if ($_SESSION['username'] == 'guest'){
         header("Location: ../index.php");
     }
-    
-    //echo $_SESSION['username'];
-    //var_dump($_SESSION);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -32,8 +30,9 @@
             </ul>
             </nav>
             <div class="container-12" style="justify-content">
-                <div style="width : 400px; background-color: white; height : 400px;">
-            </div>
+                <div style="width: 400px;">
+                <?php include 'display_photos.php'; ?>
+                </div>
             </div>
             
 <!--

@@ -30,12 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST'){
 				$new_height = $image_width/$w  * $h;
 				$image_1 = imagecreatefrompng($_POST[$filter_name]);
 				$image_1 = imagescale($image_1, $image_width, -1);
-
-				//225/400 * (400)
-								//($dst_image , $src_image , $dst_x , $dst_y , $src_x , $src_y , $dst_w , $dst_h , $src_w , $src_h )
+				//($dst_image , $src_image , $dst_x , $dst_y , $src_x , $src_y , $dst_w , $dst_h , $src_w , $src_h )
 				imagecopyresampled ($dest , $image_1 , 0 , 0, 0 , 0, $image_width, $image_height, $image_width  ,$image_height);
-				
-				//echo "filter ".$k." selected";
+
 			}
 		}
 	}else{

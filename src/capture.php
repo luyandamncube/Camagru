@@ -20,7 +20,7 @@
 	</head>
 	<style>
 		body{
-			background-color : ;/*rgb(14, 15, 17);*/
+			background-color : black;/*rgb(14, 15, 17);*/
 		}
 	</style>
 	<body>
@@ -59,7 +59,7 @@
 
 				</div>
 				<!-- Filter buttons -->
-				<div class= "container-12" style="width: 100%; height: 40px;"><label>
+				<div id="filter_buttons" class= "container-12" style="width: 100%; height: 40px;"><label>
 					<!-- filter_1 -->
 					<label>
 						<input id="filter_1" type="checkbox" name="filters" value="small"/>
@@ -111,7 +111,7 @@
 				<a id="delete" class="links"href="#"><i class="fas fa-trash"></i></a>
 				<a id="capture" class="links"href="#"><i class="fas fa-camera"></i></a>
 	
-				<a id="save" class="links"href="#"><i class="fas fa-save"></i></a>
+				<!-- <a id="save" class="links"href="#"><i class="fas fa-save"></i></a>-->
 			</div>
 			<div id="status"></div>
 			<canvas id="canvas" width="400" height="300"> </canvas>

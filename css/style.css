@@ -21,7 +21,7 @@ body{background: #1F222B;}
 /* Nav bar */.container-9{font-size:20px;align-items:center;}
 /* camera buttons */.container-10{justify-content: space-between;color:white;font-size:30px;padding:4px 5px}
 /* signup error messages */.container-11{justify-content: center;font-size: 15px; height: 20px; color: red; }
-/* settings page */.container-12{display: flex; justify-content: center; }
+/* settings page */.container-12{}
 /* sdp overlay */.container-13{color:white;opacity:0.0;justify-content:center;}
 
 .submit_banner{
