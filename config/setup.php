@@ -57,7 +57,7 @@ try{
         $sql = "CREATE TABLE IF NOT EXISTS `db`.`likes` ( 
             `like_num` INT NOT NULL , 
             `username` VARCHAR(255) NOT NULL , 
-            `likes` INT NOT NULL , 
+            `comment` VARCHAR(255) NOT NULL ,
             PRIMARY KEY (`like_num`)
             ) ENGINE = InnoDB;";
         $db->exec($sql);

@@ -47,7 +47,11 @@
             <div class="container-12" style="justify-content">
                  <div style="width: 400px;">
                     
-                    <div id="home_pics"></div>
+                    <div id="home_pics">
+
+                    
+                                    
+                    </div>
                 </div>
                 
             </div>

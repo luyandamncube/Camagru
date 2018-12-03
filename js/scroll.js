@@ -31,3 +31,18 @@ window.addEventListener("DOMContentLoaded",function() {
     }
 
 });
+/*
+function like_pic (pic_num){
+
+    var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP'),
+    vars = "pages="+page_no, 
+    url = "../src/like_photos.php" ; 
+    xhr.open("POST", url);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState>3 && xhr.status==200) success(xhr.responseText);
+    };
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send(vars);
+    return xhr;
+}
+*/

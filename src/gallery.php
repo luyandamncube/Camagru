@@ -17,6 +17,15 @@
 			</a>
 			</div>
 
+
+  <div style="height : 100px; width : 150px;" id = "containter-12" id="div_1"><!-- Needs a height-->
+			<a class="links" href="#" ><i style="font-size:20px;"class="fas fa-heart"></i></a>
+			<img style="height : 100px; positon: relative; width: 100%;" src="../resources/placeholder.jpg" alt="Slide 4" />
+			<a class="links" href="#" ><i style="font-size:20px;"class="fas fa-heart"></i></a>
+			<a class="links" href="#" ><i style="font-size:20px;"class="fas fa-comment"></i></a>
+  </div> 
+
+
 <!-- Photo Grid 
 <div class="row"> 
 		<div class="column">

@@ -4,13 +4,15 @@ include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/connect.php';
 if (!isset($_SESSION)){
 	include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/session.php';
 }
-$offset = $_POST['pages'] * 3;
 if ($_SERVER["REQUEST_METHOD"] === 'POST'){
 	//echo "POST success";
 	try{
 		$database = new SQLRequest();
-		$db = $database->openConnection();
-		$stm = $db->prepare("SELECT * FROM images WHERE username=:_1 LIMIT 3 OFFSET ".$offset);
+        $db = $database->openConnection();
+        
+
+        /*
+        $stm = $db->prepare("SELECT * FROM images WHERE username=:_1 LIMIT 3 OFFSET ".$offset);
 		$stm->execute(array(
 			'_1' => $_SESSION['username'],
 		)); 
@@ -26,13 +28,23 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST'){
 				echo '</div>'; 
 			}
 			
-		   } while ($user);
+           } while ($user);
+           */
+
+        
+        /*
+        $stm = $db->prepare("INSERT INTO likes (username, likes) 
+        VALUES (:_1, :_2)");
+        //USE SINGLE QUOTES HERE!!!      
+        //logins = logins + 1               
+        $stm->execute(array(
+        ':_1' => $_SESSION['username'], 
+        ':_2' => $_POST['email'], 
+        ));
+        */
 		$database->closeConnection();
 	}catch (PDOException $e){
 		echo "There is a problem connecting to the database: " . $e->getMessage();
-	} 
-}
-
-
-
-?>
+    } 
+    
+    ?>
