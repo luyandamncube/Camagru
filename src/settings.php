@@ -12,7 +12,7 @@
 		<title>Settings</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script src="../js/camera.js"></script>
+		<script src="../js/settings.js"></script>
 		<link rel="shortcut icon" typ="image/png" href="../resources/favicon.png"/>
 		<link rel="stylesheet" href="../css/style.css">
 		<link rel="stylesheet" type="text/css"
@@ -35,8 +35,7 @@
 					<!-- OVERLAY UPLOAD -->
 					<div  class="container-13" style="position: absolute; width: 150px; height: 150px;border-radius: 100%;">
 						<a href="#" ><i style="font-size:150px;"class="fas fa-upload"></i></a>
-						<input  onchange="document.getElementById('upload_1').src = window.URL.createObjectURL(this.files[0])" 
-						style="width:150px; position: absolute; " type="file" name="upload_dp" class= "upload_dp"accept="image/*">
+						<input  id ="upload_some" style="width:150px; position: absolute; " type="file" name="upload_dp" class= "upload_dp"accept="image/*">
 					</div>
 					<img alt="" id="upload_1" style="height : 150px; width : 150px;border-radius: 100%;" src="">					
 					<?php 

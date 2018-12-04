@@ -55,13 +55,20 @@ try{
 
         //Create likes table 
         $sql = "CREATE TABLE IF NOT EXISTS `db`.`likes` ( 
-            `like_num` INT NOT NULL , 
-            `username` VARCHAR(255) NOT NULL , 
-            `comment` VARCHAR(255) NOT NULL ,
+            `like_num` INT(50) NOT NULL AUTO_INCREMENT UNIQUE,
+            `username` VARCHAR(255) NOT NULL ,
+            `pic_num` VARCHAR(255) NOT NULL , 
             PRIMARY KEY (`like_num`)
             ) ENGINE = InnoDB;";
         $db->exec($sql);
-
+        //Create comments table 
+        $sql = "CREATE TABLE IF NOT EXISTS `db`.`comments` ( 
+            `comment_num` INT(50) NOT NULL AUTO_INCREMENT UNIQUE, 
+            `username` VARCHAR(255) NOT NULL , 
+            `comment` VARCHAR(255) NOT NULL , 
+            PRIMARY KEY (`comment_num`)
+            ) ENGINE = InnoDB;";
+        $db->exec($sql);
         //Add foreign Key to images table
         $sql = "ALTER TABLE `likes` 
         ADD CONSTRAINT likedby_FK 

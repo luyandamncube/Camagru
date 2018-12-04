@@ -42,28 +42,16 @@ function addFilter(parentId, elementTag, elementId, src) {
     newElement.style.zindex = "5000";
     
 }
-function clickme($element, $value){
-    $el = document.getElementById($element);
-    if ($el.disabled){
-        $el.disabled = false;
-        $el.style.backgroundColor = "rgb(82, 88, 108)";
-        $el.value = $value;
-    }
-        
-    else{
-        $el.disabled = true;
-        $el.style.backgroundColor = "#1F222B";
-        $el.value = $value;
-    }
-}
+
 
  //AJAX FUNCTIONALITY
  function ajaxpost(_1,_2,_3,_4,_5, _6,_7, currentpic, photo){
     // Create our XMLHttpRequest object
-    var hr = new XMLHttpRequest();
+    var hr = new XMLHttpRequest(),
+    status_bar = document.getElementById("status"),
     // Create some variables we need to send to our PHP file
-    var url = "../src/merge.php";
-    var filt_1 = _1 ? "../filters/101.png" : "",
+    url = "../src/merge.php",
+    filt_1 = _1 ? "../filters/101.png" : "",
     filt_2 = _2 ? "../filters/102.png" : "",
     filt_3 = _3 ? "../filters/103.png" : "",
     filt_4 = _4 ? "../filters/104.png" : "",
@@ -213,13 +201,18 @@ window.addEventListener("DOMContentLoaded",function() {
             //video
             currentpic = canvas.toDataURL();
             photo.setAttribute("style", "transform: rotateY(180deg);-webkit-transform:rotateY(180deg); /* Safari and Chrome */-moz-transform:rotateY(180deg); /* Firefox */");
-       
+            hideElement(up_btn);
+            showElement(vid_btn);
            // photo.setAttribute("src", currentpic); 
         } else{
             //upload
             context.drawImage(up_pic, 0, 0, 400, 300);
             //photo.setAttribute("src", up_pic.src);
             currentpic = up_pic.src;
+            removeFilters();
+           
+            hideElement(vid_btn);
+            showElement(up_btn);
         } 
         //photo.setAttribute("width", "80");
         photo.setAttribute("height", "60");
@@ -231,8 +224,8 @@ window.addEventListener("DOMContentLoaded",function() {
         //AJAX POST
 
         ajaxpost(_1,_2,_3,_4,_5, _6,_7, currentpic, photo);
-             
         
+        removeSauce(up_pic);
     });   
     up_btn.addEventListener("change",function(){
         //Set upa a reader that converts media to base64

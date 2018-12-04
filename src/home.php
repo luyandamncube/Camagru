@@ -15,19 +15,7 @@
         <link rel="stylesheet" type="text/css"
         href="../font/web-fonts-with-css/css/fontawesome-all.min.css">
         <script src="../js/scroll.js">
-            /*
-            window.onscroll = function() {
-            if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
-                //alert('At the bottom!');
-                console.log("1");
-                var hr = new XMLHttpRequest(),
-                url = "../src/display_photos.php",
-                vars = "scrolled=1";
-                hr.open("GET", url, true);
-                hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                hr.send(vars);
-            }
-            };*/
+
         </script>
     </head>
 	<title>Home</title>
