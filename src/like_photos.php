@@ -5,9 +5,9 @@ if (!isset($_SESSION)){
 	include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/session.php';
 }
 
-echo "entered php";
+//echo "entered php";
 if ($_SERVER["REQUEST_METHOD"] === 'POST'){
-echo "POST success";
+//echo "POST success";
 	try{
 		$database = new SQLRequest();
         $db = $database->openConnection();

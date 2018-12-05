@@ -52,14 +52,15 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST'){
 		//if ($user['username'] == $user_name){
 		$photo_id = $_SESSION['username']."_".$_POST['photo_id'];
 		//echo $photo_id;
-			$stm = $db->prepare("INSERT INTO images (pic_num, username, picture, likes) 
-			VALUES (:_1, :_2, :_3, :_4)");
+			$stm = $db->prepare("INSERT INTO images (pic_num, username, picture, likes, comments) 
+			VALUES (:_1, :_2, :_3, :_4, :_5)");
 			//USE SINGLE QUOTES HERE!!!                    
 			$stm->execute(array(
 			':_1' => $photo_id,
 			':_2' => $_SESSION['username'], 
 			':_3' => $actual_file, 
 			':_4' => 0, 
+			':_5' => 0, 
 			));  
 		$database->closeConnection();
 		echo json_encode(array("username" => $_SESSION["username"], "status" => "success", "src" => $actual_file));

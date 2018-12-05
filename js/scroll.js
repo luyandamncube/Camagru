@@ -44,64 +44,71 @@ function comment_pic(comment,success ){
 }
 
 window.addEventListener("DOMContentLoaded",function() {
+
+    /*
+    function addDomContent(data)
+    {}
+    */
     var onscroll = document.getElementById("onscroll"),
         page_no = 0,
         home_pics = document.getElementById("home_pics");
     if (page_no == 0){
-        getAjax("../src/display_photos.php", function(data){ home_pics.innerHTML = home_pics.innerHTML+data; }, page_no++);
+        getAjax("../src/display_photos.php", function(data){
+            home_pics.innerHTML = home_pics.innerHTML+data; 
+            //Get entire picture group
+            var comments =  document.querySelectorAll("i[name='comment']"),
+                likes = document.querySelectorAll("i[name='like']"),
+                textarea = "";
+            //console.log(comments);
+            for (var i = 0; i < comments.length; i++){
+                comments[i].parentNode.onclick  = null;
+                likes[i].parentNode.onclick  = null;
+                comments[i].parentNode.addEventListener("click", function(){
+         
+                });
+                likes[i].parentNode.addEventListener("click", function(){
+                    // var text =  this.parentNode.querySelector("textarea");
+                    // text.style = "block";
+                    console.log(this.childNodes);
+                    like_pic(this.childNodes[0].id,  function(data){ home_pics.innerHTML = home_pics.innerHTML+data; });
+                    this.childNodes[0].setAttribute("style", "font-size:20px; color:pink;");
+                });
+            }
+        }, page_no++);
+
     }
     //INFINITE SCROLL PAGINATION
     window.onscroll = function() {
         if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
            // alert('At the bottom!');
-            getAjax("../src/display_photos.php", function(data){ home_pics.innerHTML = home_pics.innerHTML+data; }, page_no++);
+            getAjax("../src/display_photos.php", function(data){
+                
+                home_pics.innerHTML = home_pics.innerHTML+data;
+                var comments =  document.querySelectorAll("i[name='comment']"),
+                    likes = document.querySelectorAll("i[name='like']"),
+                    textarea = document.querySelectorAll("textarea[name='comments']");
+                console.log(comments);
+                for (var i = 0; i < comments.length; i++)
+                {
+                    comments[i].parentNode.onclick  = null;
+                    likes[i].parentNode.onclick  = null;
+                    comments[i].parentNode.addEventListener("click", function(){
+             
+                    });
+                    likes[i].parentNode.addEventListener("click", function(){
+                        // var text =  this.parentNode.querySelector("textarea");
+                        // text.style = "block";
+                        console.log(this.childNodes[0].id);
+                        like_pic(this.childNodes[0].id,  function(data){ home_pics.innerHTML = home_pics.innerHTML+data; });
+                        this.childNodes[0].setAttribute("style", "font-size:20px; color:pink;");
+                    });
+                }
+            
+            }, page_no++);
+  
         }
     }
 
-    //Creates event listeners for children i.e. DOM objects
-    document.getElementById("home_pics").addEventListener("click", function(e) {
-        var child = document.getElementById("home_pics").childNodes;
-        
-        if(e.target && e.target.nodeName == "I" && e.target.getAttribute("name") === "like"){
-            //like button event
-            console.log(e.target);
-            like_pic(e.target.id,  function(data){ home_pics.innerHTML = home_pics.innerHTML+data; });
-            e.target.setAttribute("style", "font-size:20px; color:pink;");
-            
-        }else if (e.target && e.target.nodeName == "I" && e.target.getAttribute("name") === "comment"){
-            //comment button event
-            var h = e.target.id,
-                k = 0;
-                
-            while(k++ < child.length - 1){
-                   var n = child[k].id != "undefined" ? child[k].id : "",
-                        view = "none",
-                        r = n == "" ? -1 : h.indexOf(n);
-                    if (r > 0){
-                        view = child[k-1].style.display == "none" ? "block" : "none";
-                        child[k-1].style.display = view;
-                    }
-            }
-            
-
-        }else if (e.target && e.target.nodeName == "B" && e.target.getAttribute("name") === "post_comment"){
-            /*
-            DO SOME MATHS HERE TO PULL THE TEXTAREA innerHTML
-            var h = e.target.id,
-            k = 0;
-            while(child[k++]){
-                var n = child[k].id,
-                        r = h.indexOf(n);
-                    if (r > 0){
-                    // console.log("found at: " + k);
-                        child[k-1].style.display = "block";
-                    }
-            }*/
-            
-            console.log("posting!");
-            //console.log(child);
-            //comment_pic(e.target.id,  function(data){ home_pics.innerHTML = home_pics.innerHTML+data; });
-        }
-
-    });
 });
+
+

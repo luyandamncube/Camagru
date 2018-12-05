@@ -209,10 +209,7 @@ window.addEventListener("DOMContentLoaded",function() {
             context.drawImage(up_pic, 0, 0, 400, 300);
             //photo.setAttribute("src", up_pic.src);
             currentpic = up_pic.src;
-            removeFilters();
-           
-            hideElement(vid_btn);
-            showElement(up_btn);
+         
         } 
         //photo.setAttribute("width", "80");
         photo.setAttribute("height", "60");
@@ -225,6 +222,9 @@ window.addEventListener("DOMContentLoaded",function() {
         ajaxpost(_1,_2,_3,_4,_5, _6,_7, currentpic, photo);
         
         removeSauce(up_pic);
+        removeFilters();
+        hideElement(vid_btn);
+        showElement(up_btn);
     });   
     up_btn.addEventListener("change",function(){
         //Set upa a reader that converts media to base64
