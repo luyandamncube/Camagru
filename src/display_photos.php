@@ -25,12 +25,25 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST'){
 				)); 
 				$colors = $stm_2->fetch();
 				$icon_color = $colors ? "pink": "white" ;
-				//echo '<div>'; 
+
+				$id = substr($user["pic_num"], strlen($_SESSION['username'])+1);
 				echo '<img style="height : 25px; border-radius : 100%;"alt= "'.$user["username"]. '"src="data:image/png;base64,'.$_SESSION['dp'].'">';
 				echo '<img class="camera_roll_pic" style="width : 100%;" src="data:image/png;base64,'.$user["picture"].'"/>';
-				echo '<a class="links" href="#" ><i name= "like" id="'.$user["pic_num"].'"style="font-size:30px; color:'.$icon_color.'"class="fas fa-heart"></i></a>
-				<a class="links" href="#" ><i name ="comment" style="font-size:30px;"class="fas fa-comment"></i></a>';
-				echo '<textarea  class="textarea" style="float: right; background-color: rgb(82, 88, 108); width: 70%;"> </textarea>' ;
+				
+				//echo '<div style="width:100px ; ">';
+				echo '<a class="links" href="#/" ><i id="'.$user["pic_num"].'"name= "like" style="font-size:20px; color:'.$icon_color.'"class="fas fa-heart"></i></a>';
+				if (intval($user['likes']) > 0){
+					echo '<b style = "font-size : 18px; color : white;"> '.$user['likes']. '</b>';
+				}
+				//id="'.$user["pic_num"].'"
+				echo'<a class="links" href="#/" ><i id="'.$user["pic_num"].'_" name ="comment" style="font-size:20px;"class="fas fa-comment"></i></a>';
+				if (intval($user['likes']) > 0){
+					echo '<b style = "font-size : 18px; color : white;"> '.$user['comments']. '</b>';
+				}
+				//echo '</div>';
+				echo '<textarea style="display: none ;width : 100%"class="textarea"></textarea>';
+				echo '<input id="'.$id.'" style= "border-radius: 10px; color: white; font-color: white; border-width:0px; border:none; background-color: rgb(82, 88, 108); height: 22px; width: 200px;" placeholder=" Write a comment">  </input>' ;
+				echo '<a class= "links" href="#/"> <b name="post_comment" style = "font-size : 20px; color : white;"> post </b> </a>';
 				echo '<br>'; 
 			}
 			

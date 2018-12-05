@@ -200,7 +200,7 @@ window.addEventListener("DOMContentLoaded",function() {
      if (isHidden(up_pic)){
             //video
             currentpic = canvas.toDataURL();
-            photo.setAttribute("style", "transform: rotateY(180deg);-webkit-transform:rotateY(180deg); /* Safari and Chrome */-moz-transform:rotateY(180deg); /* Firefox */");
+            photo.setAttribute("style", "transform: rotateY(180deg);-webkit-transform:rotateY(180deg); -moz-transform:rotateY(180deg); ");
             hideElement(up_btn);
             showElement(vid_btn);
            // photo.setAttribute("src", currentpic); 
@@ -217,7 +217,6 @@ window.addEventListener("DOMContentLoaded",function() {
         //photo.setAttribute("width", "80");
         photo.setAttribute("height", "60");
         photo.setAttribute("class", "camera_roll_pic");
-        photo.setAttribute("style", "    transform: rotateY(180deg);-webkit-transform:rotateY(180deg); /* Safari and Chrome */-moz-transform:rotateY(180deg); /* Firefox */")
         photo.setAttribute("id", photo_id);
         camera_roll.insertBefore(photo, camera_roll.firstElementChild);
         photo = camera_roll.firstElementChild;

@@ -42,6 +42,7 @@ try{
             `username` VARCHAR(255) NOT NULL , 
             `picture` LONGBLOB NOT NULL , 
             `likes` INT NOT NULL , 
+            `comments` INT NOT NULL , 
             PRIMARY KEY (`pic_num`)
             ) ENGINE = InnoDB;";
         $db->exec($sql);

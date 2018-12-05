@@ -65,7 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST'){
 		echo json_encode(array("username" => $_SESSION["username"], "status" => "success", "src" => $actual_file));
 	} catch (PDOException $e){
 		echo json_encode(array("username" => $_SESSION["username"], "status" => "There is a problem connecting: " . $e->getMessage()));
-	}      
+	}     
+	//destroy temp file after use 
 	unlink($directory );
 }
 

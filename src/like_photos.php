@@ -5,14 +5,14 @@ if (!isset($_SESSION)){
 	include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/session.php';
 }
 
-//echo "entered php";
+echo "entered php";
 if ($_SERVER["REQUEST_METHOD"] === 'POST'){
-	//echo "POST success";
+echo "POST success";
 	try{
 		$database = new SQLRequest();
         $db = $database->openConnection();
 		
-        
+        var_dump($_POST);
         $stm = $db->prepare("SELECT * FROM likes WHERE username=:_1 ");
 		$stm->execute(array(
 			'_1' => $_SESSION['username'],
