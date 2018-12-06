@@ -8,6 +8,7 @@
 <head>
     <link rel="shortcut icon" type="image/png" href="../resources/favicon.png"/>
     <link rel="stylesheet" type="text/css"href="../font/web-fonts-with-css/css/fontawesome-all.min.css"><!--load all styles -->
+    <script src="../js/forgot_pass.js"></script>
 </head>
     <title>Login</title>
     <link rel="stylesheet" href="../css/style.css">
@@ -25,6 +26,7 @@
             <div class ="container-5"><input type="password" placeholder= " Password" class="input" name="loginpass"></input></div>
             <div class="container-11"><?php echo $loginpassErr;?></div>
             <div class="container-4"><input class="submit_banner" type="submit" value="Login!"></div>
+            <a id="forgot_pass" class="links"href= "#/"> <div style="font-size : 20px;"class="container-12"> Forgot password?</div></a>
         </form> 
         
    <a class="links"href="https://github.com/luyandamncube"><div class="footer">  © lmncube 2018</div></a>

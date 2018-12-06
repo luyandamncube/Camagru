@@ -65,6 +65,7 @@ try{
         //Create comments table 
         $sql = "CREATE TABLE IF NOT EXISTS `db`.`comments` ( 
             `comment_num` INT(50) NOT NULL AUTO_INCREMENT UNIQUE, 
+            `pic_num` VARCHAR(255) NOT NULL , 
             `username` VARCHAR(255) NOT NULL , 
             `comment` VARCHAR(255) NOT NULL , 
             PRIMARY KEY (`comment_num`)
