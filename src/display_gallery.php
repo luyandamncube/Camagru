@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST'){
 	try{
 		$database = new SQLRequest();
 		$db = $database->openConnection();
-		$stm = $db->prepare("SELECT * FROM images WHERE username=:_1 LIMIT 3 OFFSET ".$offset);
+		$stm = $db->prepare("SELECT * FROM images LIMIT 3 OFFSET ".$offset);
 		$stm->execute(array(
 			'_1' => $_SESSION['username'],
 		)); 
@@ -27,8 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST'){
 				$icon_color = $colors ? "pink": "white" ;
 
 				$id = substr($user["pic_num"], strlen($_SESSION['username'])+1);
-				$art_id = "art".$id;
-				echo '<article id="'.$art_id.'">';
+				$art_id = "art".$id;				echo '<article id="'.$art_id.'">';
 				echo '<img style="height : 40px; width : 40px; border-radius : 100%;"alt= "'.$user["username"]. '"src="data:image/png;base64,'.$_SESSION['dp'].'">';
 				//echo '<text style = "color : white; font-size : 10px"> @'.$_SESSION['username'].'</text>';
 				echo'<a style="vertical-align: bottom; float: right; "class="links" href="#/" ><i name ="delete" style="font-size:20px;"class="fas fa-times"></i></a>';

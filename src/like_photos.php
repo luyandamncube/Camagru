@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST'){
 		$database = new SQLRequest();
         $db = $database->openConnection();
 		
-        //var_dump($_POST);
+        var_dump($_POST);
         $stm = $db->prepare("SELECT * FROM likes WHERE pic_num=:_1 ");
 		$stm->execute(array(
 			'_1' => $_POST['pic_num'],

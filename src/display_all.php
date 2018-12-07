@@ -19,13 +19,13 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST'){
 				'_1' => $image['username'],
 			));	
 			$users = $stm_2->fetch();
-			//var_dump($users);
+
 			$id = substr($image["pic_num"], strlen($image['username'])+1);
 			$art_id = "art".$id;
 			echo '<article id="'.$art_id.'">';
-			echo '<img style="height : 40px; border-radius : 100%;"alt= "'.$image["username"].'"src="data:image/png;base64,'.$users['avatar'].'">';
+			echo '<img style="height : 40px; width: 40px;border-radius : 100%;"alt= "'.$image["username"].'"src="data:image/png;base64,'.$users['avatar'].'">';
 			echo '<img class="camera_roll_pic" style="width : 100%;" src="data:image/png;base64,'.$image["picture"].'"/>';
-			echo '<i id="'.$image["pic_num"].'"name= "like" style="font-size:20px; color: white"class="fas fa-heart"></i>';
+			echo '<a class="links" href="#/" ><i id="'.$image["pic_num"].'"name= "like" style="font-size:20px; color: white"class="fas fa-heart"></i></a>';
 			if (intval($image['likes']) > 0){
 				echo '<b style = "font-size : 18px; color : white;"> '.$image['likes']. '</b>';
 			}
@@ -34,6 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST'){
 				echo '<b style = "font-size : 18px; color : white;"> '.$image['comments']. '</b>';
 			}
 			echo '<textarea id="'.$image["pic_num"].'_1" name="comments" style="display: none ;height: 100px;width : 100%"class="textarea"></textarea>';
+			echo '<input id="'.$id.'" style= "border-radius: 10px; color: white; font-color: white; border-width:0px; border:none; background-color: rgb(82, 88, 108); height: 22px; width: 200px;" placeholder=" Write a comment">  </input>' ;
+			echo '<a class= "links" href="#/"> <b name="post_comment" style = "font-size : 20px; color : white;"> post </b> </a>';
 			echo "</article>";
 			echo '<br>'; 
 			}
