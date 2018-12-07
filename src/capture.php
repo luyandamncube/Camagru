@@ -103,7 +103,7 @@
 				<video style=""id="video" 
 						width="400" height="300" src="">
 				</video>
-				<img alt="" id="upload_2" style="height : 400px; 
+				<img alt="" id="upload_2" style="
 				width : 400px; position : absolute; z-index: -20;" hidden="true"src="">
 			</div>
 			<!-- Bottom buttons -->
