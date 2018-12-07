@@ -29,7 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST'){
 				$id = substr($user["pic_num"], strlen($_SESSION['username'])+1);
 				$art_id = "art".$id;
 				echo '<article id="'.$art_id.'">';
-				echo '<img style="height : 25px; border-radius : 100%;"alt= "'.$user["username"]. '"src="data:image/png;base64,'.$_SESSION['dp'].'">';
+				echo '<img style="height : 40px; border-radius : 100%;"alt= "'.$user["username"]. '"src="data:image/png;base64,'.$_SESSION['dp'].'">';
+				//echo '<text style = "color : white; font-size : 10px"> @'.$_SESSION['username'].'</text>';
 				echo'<a style="vertical-align: bottom; float: right; "class="links" href="#/" ><i name ="delete" style="font-size:20px;"class="fas fa-times"></i></a>';
 				echo '<img class="camera_roll_pic" style="width : 100%;" src="data:image/png;base64,'.$user["picture"].'"/>';
 				

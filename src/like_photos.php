@@ -9,6 +9,8 @@ if (!isset($_SESSION)){
 //echo "entered php";
 if ($_SERVER["REQUEST_METHOD"] === 'POST'){
 //echo "POST success";
+// var_dump($_POST);
+
 	try{
 		$database = new SQLRequest();
         $db = $database->openConnection();
@@ -28,11 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST'){
 				':_1' => $_SESSION['username'], 
 				':_2' => $_POST['pic_num'], 
 			));	
-			/*
-				UPDATE mytable 
-				SET logins = logins + 1 
-				WHERE id = 12
-			*/
+
 			$stm = $db->prepare("UPDATE images
 								SET likes = likes + 1 
 								WHERE pic_num = :_1");
@@ -43,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST'){
 		$database->closeConnection();
 	}catch (PDOException $e){
 		echo "There is a problem connecting to the database: " . $e->getMessage();
-    } 
+	} 
 }
 
 ?>

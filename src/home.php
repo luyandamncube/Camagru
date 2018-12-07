@@ -4,7 +4,6 @@
     if ($_SESSION['username'] == 'guest'){
         header("Location: ../index.php");
     }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,9 +13,7 @@
         <link rel="shortcut icon" typ="image/png" href="../resources/favicon.png"/>
         <link rel="stylesheet" type="text/css"
         href="../font/web-fonts-with-css/css/fontawesome-all.min.css">
-        <script src="../js/scroll.js">
-
-        </script>
+        <script src="../js/scroll.js"></script>
     </head>
 	<title>Home</title>
 	<link rel="stylesheet" href="../css/style.css">
@@ -31,29 +28,13 @@
 					echo $image_pre.$_SESSION['dp'].'"/>';?></a></li>
                 <li><a class="links" href="end.php"><i class="fas fa-sign-out-alt"></i></a></li>
             </ul>
-            </nav>
-            <div class="container-12" style="justify-content">
-                 <div style="width: 400px;">
-                    
-                    <div id="home_pics">
-
-                    
-                                    
-                    </div>
-                </div>
-                
+        </nav>
+        
+            <div class="container-12">
+            <div style="width: 400px;"><div id="home_pics"><!-- New DOM elements go here --></div></div>
             </div>
-            </div>
-            
-<!--
-        <div class="fling-minislide" style="height: 100%">
-            <img src="../resources/placeholder.jpg" alt="Slide 4" />
-            <img src="../resources/placeholder1.jpg" alt="Slide 3" />
-            <img src="../resources/placeholder2.jpg" alt="Slide 2" />
-            <img src="../resources/placeholder3.jpg" alt="Slide 1" />
-
-        </div>
--->
+        
+       
         <a class="links"href="https://github.com/luyandamncube">
         <div class="footer" style="">© lmncube 2018</div></a>
 

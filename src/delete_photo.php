@@ -5,33 +5,34 @@ if (!isset($_SESSION)){
 	include $_SERVER['DOCUMENT_ROOT'].'/Camagru/src/session.php';
 }
 
-
-echo "entered php";
+// echo "entered php";
 if ($_SERVER["REQUEST_METHOD"] === 'POST'){
-echo "POST success";
-/*
+// echo "POST success";
 	try{
         $database = new SQLRequest();
         $db = $database->openConnection();
 		
-        //var_dump($_POST);
-        $stm = $db->prepare("SELECT * FROM comments WHERE pic_num=:_1 ");
+        //delete image from images table
+        $stm = $db->prepare("DELETE FROM images WHERE pic_num=:_1 ");
 		$stm->execute(array(
-			'_1' => $_POST['pic_num'],
-		)); 
+			'_1' => $_POST["pic_num"],
+        ));
+         
+        //delete likes from likes table
+        $stm = $db->prepare("DELETE FROM likes WHERE pic_num=:_1 ");
+        $stm->execute(array(
+            '_1' => $_POST["pic_num"],
+        )); 
+        //delete comments from comments table
+        $stm = $db->prepare("DELETE FROM likes WHERE pic_num=:_1 ");
+        $stm->execute(array(
+            '_1' => $_POST["pic_num"],
+        )); 
         // $user = $stm->fetch();
-        do {
-            $user = $stm->fetch();
-            // var_dump($user);
-            if($user){
-                echo "@".$user['username'].": ".$user['comment']. "\n";
-            }
-
-        } while ($user);
-        
+      
         $database->closeConnection();
 
     }catch (PDOException $e){
 		echo "There is a problem connecting to the database: " . $e->getMessage();
-    } */
+    } 
 }

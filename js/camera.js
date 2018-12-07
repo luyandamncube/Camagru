@@ -1,4 +1,3 @@
-//var status_bar = document.getElementById("status");
 function isHidden(el) {
     var style = window.getComputedStyle(el);
     return (style.display === 'none')
@@ -31,7 +30,6 @@ function removeFilters(){
     }
     overlay.innerHTML = "";
 }
-
 function addFilter(parentId, elementTag, elementId, src) {
     var newElement = document.createElement(elementTag);
     newElement.setAttribute('id', elementId);
@@ -42,10 +40,19 @@ function addFilter(parentId, elementTag, elementId, src) {
     newElement.style.zindex = "5000";
     
 }
-
-
- //AJAX FUNCTIONALITY
- function ajaxpost(_1,_2,_3,_4,_5, _6,_7, currentpic, photo){
+function delete_photo(pic_num,success ){
+    var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP'),
+    vars = "pic_num="+pic_num, 
+    url = "../src/delete_photo.php" ; 
+    xhr.open("POST", url);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState>3 && xhr.status==200) success(xhr.responseText);
+    };
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send(vars);
+    return xhr;
+}
+function ajaxpost(_1,_2,_3,_4,_5, _6,_7, currentpic, photo){
     // Create our XMLHttpRequest object
     var hr = new XMLHttpRequest(),
     status_bar = document.getElementById("status"),
@@ -59,7 +66,6 @@ function addFilter(parentId, elementTag, elementId, src) {
     filt_6 = _6 ? "../filters/106.png" : "",
     filt_7 = _7 ? "../filters/107.png" : "",
     //console.log("Inside ajax bind: "+ this);
-
     // encodeURIComponent preserves URLs, Kay saved my life
     vars = "filter_1="+filt_1+"&filter_2="+filt_2+"&filter_3="+filt_3+"&filter_4="+filt_4
     +"&filter_5="+filt_5+"&filter_6="+filt_6+"&filter_7="+filt_7+"&current="+encodeURIComponent(currentpic)+"&photo_id="+photo.getAttribute("id");
@@ -68,7 +74,6 @@ function addFilter(parentId, elementTag, elementId, src) {
     hr.open("POST", url, true);
     hr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     // Access the onreadystatechange event for the XMLHttpRequest object
-
     hr.onreadystatechange = function(image)
     {
         if(hr.readyState == 4 && hr.status == 200) {
@@ -98,7 +103,6 @@ function addFilter(parentId, elementTag, elementId, src) {
 
 
 //ONLY run if entire DOM is loaded
-
 //$(document).ready(function());
 window.addEventListener("DOMContentLoaded",function() {
 
@@ -175,8 +179,15 @@ window.addEventListener("DOMContentLoaded",function() {
     });
     //DELETE CAMERA ROLL
     del_btn .addEventListener("click", function(){
-        
-        camera_roll.innerHTML="";
+        //var delete_these = this.parentNode.parentNode.parentNode.querySelectorAll("div[id='camera_roll']")[0];
+        // var delete_these = querySelectorAll("img[name='post_comment']");
+        // camera_roll.innerHTML="";
+        var delete_these = camera_roll.querySelectorAll("img");
+        for (var i = 0; i < delete_these.length ;i++){
+            delete_photo( camera_roll.querySelectorAll("img")[i].id, function(data){ camera_roll.innerHTML = camera_roll.innerHTML+data; });
+       }
+       // console.log(delete_these);
+       camera_roll.innerHTML = "";
         count = 0;
     }
     );    

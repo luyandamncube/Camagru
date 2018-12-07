@@ -9,7 +9,6 @@ if (!isset($_SESSION)){
 if ($_SERVER["REQUEST_METHOD"] === 'POST'){
 	// echo "POST success";
 	// var_dump($_POST);
-	
 	try{
 		$database = new SQLRequest();
         $db = $database->openConnection();
@@ -32,7 +31,6 @@ if ($_SERVER["REQUEST_METHOD"] === 'POST'){
 	}catch (PDOException $e){
 		echo "There is a problem connecting to the database: " . $e->getMessage();
 	} 
-	
 }
 
 ?>

@@ -25,10 +25,10 @@
 	</style>
 	<body>
 		<div>
-			<div>
-				<img class="container-8" src="../resources/logo1.png" class="links" 
-				href="#"onclick="window.history.back()"></a>
-			</div>
+			<a class="links" href="#/"onclick="window.history.back()">
+			<i style="font-size:50px; color:white;"class="fas fa-arrow-left"></i>
+		
+			</a>
 				<div class="container-10"style=" margin: 0 auto; width: 400px;">
 					<!-- Remove filter(s) -->
 					<a id="clear_all" class="links"href="#"><i class="fas fa-times-circle"></i></a>

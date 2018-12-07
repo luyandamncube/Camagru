@@ -20,10 +20,10 @@
 	</head>
 
 	<body>
-		<div>
-			<a class="links" href="home.php" > <img class="container-8" src="../resources/logo1.png"></a>
-			
-		</div>
+	<a class="links" href="#/"onclick="window.history.back()">
+			<i style="font-size:50px; color:white;"class="fas fa-arrow-left"></i>
+		
+			</a>
 		<div class="container-2"><?php echo $_SESSION['username']?>'s </div>
 			<div class="text2 container-3"> PROFILE </div><br>
 
