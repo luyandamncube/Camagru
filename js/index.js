@@ -13,11 +13,52 @@ function getAjax(url, success, page_no) {
     xhr.send(vars);
     return xhr;
 }
+function delete_photo(pic_num,success ){
+
+    var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP'),
+    vars = "pic_num="+pic_num, 
+    url = "../src/delete_photo.php" ; 
+    xhr.open("POST", url);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState>3 && xhr.status==200) success(xhr.responseText);
+    };
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send(vars);
+    return xhr;
+}
 function get_comments(pic_num,success ){
 
     var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP'),
     vars = "pic_num="+pic_num, 
-    url = "../src/get_comments.php" ; 
+    url = "src/get_comments.php" ; 
+    xhr.open("POST", url);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState>3 && xhr.status==200) success(xhr.responseText);
+    };
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send(vars);
+    return xhr;
+}
+/*
+function like_pic(pic_num,success ){
+
+    var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP'),
+    vars = "pic_num="+pic_num, 
+    url = "../src/like_photos.php" ; 
+    xhr.open("POST", url);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState>3 && xhr.status==200) success(xhr.responseText);
+    };
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send(vars);
+    return xhr;
+}
+*/
+function comment_pic(pic_id,comment,success ){
+
+    var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP'),
+    vars = "pic_num="+pic_id+"&comment="+comment, 
+    url = "../src/comment_photos.php" ; 
     xhr.open("POST", url);
     xhr.onreadystatechange = function() {
         if (xhr.readyState>3 && xhr.status==200) success(xhr.responseText);
@@ -31,6 +72,13 @@ function add_click_events(){
     likes = document.querySelectorAll("i[name='like']"),
     post_comment = document.querySelectorAll("b[name='post_comment']"),
     delete_pic = document.querySelectorAll("i[name='delete']");
+    for (var i = 0; i < likes.length; i++){
+        likes[i].parentNode.onclick  = null;            
+        likes[i].parentNode.addEventListener("click", function(){
+        like_pic(this.childNodes[0].id,  function(data){ home_pics.innerHTML = home_pics.innerHTML+data; });
+        this.childNodes[0].setAttribute("style", "font-size:20px; color:pink;");
+        });
+    }
     for (var i = 0; i < comments.length; i++){
         comments[i].parentNode.onclick  = null;
         comments[i].parentNode.addEventListener("click", function(){
@@ -47,6 +95,24 @@ function add_click_events(){
             }
         });
     }
+    for (var i = 0; i < post_comment.length; i++){
+        post_comment[i].parentNode.onclick  = null;            
+        post_comment[i].parentNode.addEventListener("click", function(){
+            var pic_send = this.parentNode.querySelectorAll("a")[1].childNodes[0].id,
+            comment_send = this.parentNode.querySelector("input").value;
+        if (comment_send){
+            comment_pic(pic_send,comment_send,function(data){ home_pics.innerHTML = home_pics.innerHTML+data; });
+       }
+        });
+    }
+    for (var i = 0; i < delete_pic.length; i++){
+        delete_pic[i].parentNode.onclick  = null;       
+        delete_pic[i].parentNode.addEventListener("click", function(){
+            var del = this.parentNode;
+            delete_photo(del.querySelectorAll("a")[1].childNodes[0].id, function(data){ del.innerHTML = del.innerHTML+data; });
+            this.parentNode.innerHTML = "";
+        });
+    }
 }
 window.addEventListener("DOMContentLoaded",function() {
 
@@ -60,8 +126,10 @@ window.addEventListener("DOMContentLoaded",function() {
 
     }
     //INFINITE SCROLL PAGINATION
+    //SUPER inconsistent, think the calc needs more work...
     window.onscroll = function() {
         if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
+            window.alert("bottom of page!");
             getAjax("src/display_all.php", function(data){
                 home_pics.innerHTML = home_pics.innerHTML+data;
                 add_click_events();

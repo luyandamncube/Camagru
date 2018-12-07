@@ -75,7 +75,6 @@ function add_click_events(){
         likes[i].parentNode.addEventListener("click", function(){
         like_pic(this.childNodes[0].id,  function(data){ home_pics.innerHTML = home_pics.innerHTML+data; });
         this.childNodes[0].setAttribute("style", "font-size:20px; color:pink;");
-        console.log(this.childNodes[0]);
         });
     }
     for (var i = 0; i < comments.length; i++){
@@ -118,16 +117,18 @@ window.addEventListener("DOMContentLoaded",function() {
     var page_no = 0,
         home_pics = document.getElementById("home_pics");
     if (page_no == 0){
-        getAjax("../src/display_all.php", function(data){
+        getAjax("../src/display_gallery.php", function(data){
             home_pics.innerHTML = home_pics.innerHTML+data; 
             add_click_events();
         }, page_no++);
 
     }
     //INFINITE SCROLL PAGINATION
+    //SUPER inconsistent, think the calc needs more work...
     window.onscroll = function() {
         if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight) {
-            getAjax("../src/display_all.php", function(data){
+            window.alert("bottom of page!");
+            getAjax("../src/display_gallery.php", function(data){
                 home_pics.innerHTML = home_pics.innerHTML+data;
                 add_click_events();
             }, page_no++);
@@ -135,6 +136,5 @@ window.addEventListener("DOMContentLoaded",function() {
     }
 
 });
-
 
 

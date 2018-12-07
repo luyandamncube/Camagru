@@ -24,6 +24,6 @@
 			<div class="container-12">
             <div style="width: 400px;"><div id="home_pics"><!-- New DOM elements go here --></div></div>
      		</div>
-              <a class="links"href="https://github.com/luyandamncube"><div class="footer">  © lmncube 2018</div></a>
+         <!-- <a class="links"href="https://github.com/luyandamncube"><div class="footer">  © lmncube 2018</div></a> -->
 </body>
 </html>
